@@ -45,6 +45,7 @@ main.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/
 main.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_packman.h
 main.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_light_sensor.h
 main.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/i2c.h
+main.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_buzzer.h
 
 ../main.c: 
 ../main.h: 
@@ -91,3 +92,4 @@ C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_packman.h: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_light_sensor.h: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/i2c.h: 
+C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_buzzer.h: 

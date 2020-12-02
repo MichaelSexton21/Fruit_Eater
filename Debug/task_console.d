@@ -45,6 +45,7 @@ task_console.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-
 task_console.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_packman.h
 task_console.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_light_sensor.h
 task_console.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/i2c.h
+task_console.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_buzzer.h
 task_console.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/stdlib.h
 
 ../task_console.c: 
@@ -92,4 +93,5 @@ C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_packman.h: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_light_sensor.h: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/i2c.h: 
+C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_buzzer.h: 
 C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/stdlib.h: 

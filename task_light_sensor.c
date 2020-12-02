@@ -129,19 +129,18 @@ void Task_Light_Sensor(void *pvParameters)
 //            print_manufacturer_id();
             lux = OPT3001_get_lux();
 
-            char curr_lux[20];
-            sprintf(curr_lux, "%zu", lux); // "%f" for float //"%zu" for int
-            char prev_lux[20];
-            sprintf(prev_lux, "%zu", lux);
-
-            xSemaphoreTake(Sem_Console, portMAX_DELAY);
-            printf("Current Lux: \n\r");
-            printf(curr_lux);
-            printf("\n\r");
-            printf("Previous Lux: \n\r");
-            printf(prev_lux);
-            printf("\n\r");
-            xSemaphoreGive(Sem_Console);
+//            char curr_lux[20];
+//            sprintf(curr_lux, "%zu", lux); // "%f" for float //"%zu" for int
+//            char prev_lux[20];
+//            sprintf(prev_lux, "%zu", lux);
+//            xSemaphoreTake(Sem_Console, portMAX_DELAY);
+//            printf("Current Lux: \n\r");
+//            printf(curr_lux);
+//            printf("\n\r");
+//            printf("Previous Lux: \n\r");
+//            printf(prev_lux);
+//            printf("\n\r");
+//            xSemaphoreGive(Sem_Console);
 
 //            if(lux < previous_lux && color < 0xDDDD){
 //                Packman_Color = color+0x0222;

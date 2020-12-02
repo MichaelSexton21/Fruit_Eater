@@ -28,6 +28,7 @@
 #include <task_accelerometer.h>
 #include <task_packman.h>
 #include <task_light_sensor.h>
+#include <task_buzzer.h>
 
 
 

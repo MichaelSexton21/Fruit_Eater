@@ -51,6 +51,7 @@ int main(void)
     Task_Console_Init();
     Task_Packman_Init();
     Task_Accelerometer_Init();
+    Task_Buzzer_Init();
 
     __enable_irq();
 
@@ -104,6 +105,15 @@ int main(void)
         3,
         &Task_Accelerometer_Handle
     );
+
+    xTaskCreate
+     (   Task_Buzzer,
+         "Task_Buzzer",
+         configMINIMAL_STACK_SIZE,
+         NULL,
+         1,
+         &Task_Buzzer_Handle
+     );
 
     /* Start the FreeRTOS scheduler */
     vTaskStartScheduler();

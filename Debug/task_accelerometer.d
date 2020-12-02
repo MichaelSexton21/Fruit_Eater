@@ -45,6 +45,7 @@ task_accelerometer.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisc
 task_accelerometer.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_packman.h
 task_accelerometer.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_light_sensor.h
 task_accelerometer.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/i2c.h
+task_accelerometer.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_buzzer.h
 
 ../task_accelerometer.c: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/main.h: 
@@ -91,3 +92,4 @@ C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_packman.h: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_light_sensor.h: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/i2c.h: 
+C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_buzzer.h: 
