@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.3                     
 ******************************************************************************
->> Linked Wed Dec  2 14:47:47 2020
+>> Linked Wed Dec  2 15:08:20 2020
 
 OUTPUT FILE NAME:   <Project.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000083a9
@@ -160,8 +160,8 @@ section   page    origin      length       input sections
                   00008798    00000008     port.obj (.const)
 
 .cinit     0    000087a0    000001b0     
-                  000087a0    00000186     (.cinit..data.load) [load image, compression = lzss]
-                  00008926    00000002     --HOLE-- [fill = 0]
+                  000087a0    00000185     (.cinit..data.load) [load image, compression = lzss]
+                  00008925    00000003     --HOLE-- [fill = 0]
                   00008928    0000000c     (__TI_handler_table)
                   00008934    00000004     --HOLE-- [fill = 0]
                   00008938    00000008     (.cinit..bss.load) [load image, compression = zero_init]
@@ -340,15 +340,15 @@ MODULE SUMMARY
                                                               
        Heap:                         0       0         2048   
        Stack:                        0       0         1024   
-       Linker Generated:             0       426       0      
+       Linker Generated:             0       425       0      
     +--+-----------------------------+-------+---------+---------+
-       Grand Total:                  34207   921       72576  
+       Grand Total:                  34207   920       72576  
 
 
 LINKER GENERATED COPY TABLES
 
 __TI_cinit_table @ 00008940 records: 2, size/record: 8, table size: 16
-	.data: load addr=000087a0, load size=00000186 bytes, run addr=20008364, run size=0000045c bytes, compression=lzss
+	.data: load addr=000087a0, load size=00000185 bytes, run addr=20008364, run size=0000045c bytes, compression=lzss
 	.bss: load addr=00008938, load size=00000008 bytes, run addr=20000000, run size=00008364 bytes, compression=zero_init
 
 

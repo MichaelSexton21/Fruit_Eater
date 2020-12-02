@@ -76,7 +76,7 @@ Note_t Song[] =
 
     {NOTE_A4,ONE_QUARTER,true},
     {NOTE_G4,ONE_QUARTER,true},
-    {NOTE_C5,ONE_HALF,false}
+    {NOTE_F4,ONE_HALF,false}
 // {NOTE_C6,ONE_QUARTER,true},
 // {NOTE_F6,ONE_QUARTER,true},
 // {NOTE_A6,ONE_QUARTER,true},
