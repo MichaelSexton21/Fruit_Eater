@@ -1,7 +1,7 @@
 ******************************************************************************
-                  TI ARM Linker PC v20.2.2                     
+                  TI ARM Linker PC v20.2.3                     
 ******************************************************************************
->> Linked Wed Dec  2 13:04:24 2020
+>> Linked Wed Dec  2 14:11:01 2020
 
 OUTPUT FILE NAME:   <Project.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000083a9
@@ -269,7 +269,7 @@ MODULE SUMMARY
     +--+-----------------------------+-------+---------+---------+
        Total:                        1298    8         48     
                                                               
-    C:\ti\ccs1010\ccs\tools\compiler\ti-cgt-arm_20.2.2.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
+    C:\ti\ccs1010\ccs\tools\compiler\ti-cgt-arm_20.2.3.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        _printfi.c.obj                4851    0         0      
        defs.c.obj                    0       0         832    
        memory.c.obj                  672     0         16     
