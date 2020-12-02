@@ -13,23 +13,17 @@
 #include "i2c.h"
 
 #define I2C_OPT3001_ADDRESS 0x44
+#define I2C_OPT3001_MANUFACTURER_ID 0x7E
+#define I2C_OPT3001_DEVICE_ID 0x7F
 #define I2C_OPT3001_RESULT_REG 0x00
 #define I2C_OPT3001_CONFIG_REG 0x01
 
 /* CONFIGURATION REGISTER SETTINGS */
-#define OPT3001_RST              0x8000
-#define OPT3001_POWER_DOWN       0x0000
-#define OPT3001_POWER_UP         0x7000
-#define OPT3001_CR_4             0x0000
-#define OPT3001_CR_2             0x0200
-#define OPT3001_CR_1             0x0400
-#define OPT3001_CR_0_5           0x0600
-#define OPT3001_CR_0_25          0x0800
-#define OPT3001_EN               0x0100
-#define OPT3001_DRDY             0x0080
+#define OPT3001_RST              0xC810
+#define OPT3001_AUTOMATIC        0xC000
+#define OPT3001_CONTINUOUS       0x0600
 
 extern TaskHandle_t Task_Light_Sensor_Handle;
-extern TaskHandle_t Task_Light_Sensor_Timer_Handle;
 
 /******************************************************************************
 * Configure the IO pins for BOTH the X and Y directions of the analog

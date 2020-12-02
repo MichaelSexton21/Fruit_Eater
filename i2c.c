@@ -12,7 +12,7 @@
 /**********************************************************************************************
  * Sets the Slave address
  **********************************************************************************************/
-__inline void i2c_set_slave_address(uint8_t slave_address)
+static __inline void i2c_set_slave_address(uint8_t slave_address)
 {
     EUSCI_B1->I2CSA = slave_address;
 }

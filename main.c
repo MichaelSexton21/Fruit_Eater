@@ -97,15 +97,6 @@ int main(void)
     );
 
     xTaskCreate
-        (   Task_Light_Sensor_Timer,
-            "Task_Light_Sensor_Timer",
-            configMINIMAL_STACK_SIZE,
-            NULL,
-            2,
-            &Task_Light_Sensor_Timer_Handle
-        );
-
-    xTaskCreate
     (   Task_Accelerometer,
         "Task_Accelerometer",
         configMINIMAL_STACK_SIZE,

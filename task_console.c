@@ -85,6 +85,7 @@ void Task_Console_Init(void)
     // Initialize the binary semaphore used to provide mutual exclusion to
     // the UART.
     Sem_Console = xSemaphoreCreateBinary();
+    xSemaphoreGive(Sem_Console);
 
 }
 
@@ -157,7 +158,6 @@ void Task_Console_Bottom_Half(void *pvParameters)
 
         // wait task to be called
         ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-        printf("Task_Console\n\r");
 
         // parse the recieved string and extract the number as a string
         char *dir =  strtok(RX_ARRAY, " "); // can ignore, must move the parse to the next string

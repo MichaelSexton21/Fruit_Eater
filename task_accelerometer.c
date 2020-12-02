@@ -87,7 +87,10 @@ void Task_Accelerometer(void *pvParameters)
 
             // Wait until we get a task notification from the ADC14 ISR
             ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
-            printf("Task_Accelerometer\n\r");
+
+//            xSemaphoreTake(Sem_Console, portMAX_DELAY);
+//            printf("Task_Accelerometer\n\r");
+//            xSemaphoreGive(Sem_Console);
 
             /*
              * Set the dir variable to one of the following values based
