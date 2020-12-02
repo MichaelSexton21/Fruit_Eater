@@ -24,6 +24,7 @@
 #define OPT3001_CONTINUOUS       0x0600
 
 extern TaskHandle_t Task_Light_Sensor_Handle;
+extern uint16_t Packman_Color;
 
 /******************************************************************************
 * Configure the IO pins for BOTH the X and Y directions of the analog

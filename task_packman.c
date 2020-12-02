@@ -50,7 +50,7 @@ void Task_Packman(void *pvParameters)
             packman_rightWidthPixels,
             packman_rightHeightPixels,
             packman_rightBitmaps,
-            LCD_COLOR_RED,
+            Packman_Color,
             LCD_COLOR_BLACK
     );
 
@@ -103,7 +103,7 @@ void Task_Packman(void *pvParameters)
                         packman_leftWidthPixels,
                         packman_leftHeightPixels,
                         packman_leftBitmaps,
-                        LCD_COLOR_RED,
+                        Packman_Color,
                         LCD_COLOR_BLACK
                 );
         }else if(dir==1){
@@ -113,7 +113,7 @@ void Task_Packman(void *pvParameters)
                         packman_rightWidthPixels,
                         packman_rightHeightPixels,
                         packman_rightBitmaps,
-                        LCD_COLOR_RED,
+                        Packman_Color,
                         LCD_COLOR_BLACK
                 );
         }else if(dir==2){
@@ -123,7 +123,7 @@ void Task_Packman(void *pvParameters)
                         packman_upWidthPixels,
                         packman_upHeightPixels,
                         packman_upBitmaps,
-                        LCD_COLOR_RED,
+                        Packman_Color,
                         LCD_COLOR_BLACK
                 );
         }else if(dir==3){
@@ -133,7 +133,7 @@ void Task_Packman(void *pvParameters)
                         packman_downWidthPixels,
                         packman_downHeightPixels,
                         packman_downBitmaps,
-                        LCD_COLOR_RED,
+                        Packman_Color,
                         LCD_COLOR_BLACK
                 );
         }

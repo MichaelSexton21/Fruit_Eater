@@ -11,7 +11,7 @@
 
 
  TaskHandle_t Task_Light_Sensor_Handle;
- TaskHandle_t Task_Light_Sensor_Timer_Handle;
+ uint16_t Packman_Color = LCD_COLOR_WHITE;
 
 
  /******************************************************************************
@@ -133,6 +133,12 @@ void Task_Light_Sensor(void *pvParameters)
 //            xSemaphoreTake(Sem_Console, portMAX_DELAY);
 //            printf(string);
 //            xSemaphoreGive(Sem_Console);
+
+            if(lux<100){
+                Packman_Color = LCD_COLOR_WHITE;
+            }else{
+                Packman_Color = LCD_COLOR_GREEN;
+            }
 
 
 
