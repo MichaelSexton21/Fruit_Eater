@@ -139,10 +139,7 @@ void Task_Light_Sensor(void *pvParameters)
             }else{
                 Packman_Color = LCD_COLOR_GREEN;
             }
-
-
-
-
+            Draw_Packman();
 
         }
 }

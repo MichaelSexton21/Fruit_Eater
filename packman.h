@@ -3,21 +3,21 @@
 
 #include <stdint.h>
 
-extern const uint8_t packman_rightBitmaps[];
-extern const uint8_t packman_rightWidthPixels;
-extern const uint8_t packman_rightHeightPixels;
+extern uint8_t packman_rightBitmaps[];
+extern const uint8_t packman_WidthPixels;
+extern const uint8_t packman_HeightPixels;
 
-extern const uint8_t packman_leftBitmaps[];
-extern const uint8_t packman_leftWidthPixels;
-extern const uint8_t packman_leftHeightPixels;
+extern uint8_t packman_leftBitmaps[];
+//extern const uint8_t packman_leftWidthPixels;
+//extern const uint8_t packman_leftHeightPixels;
 
-extern const uint8_t packman_upBitmaps[];
-extern const uint8_t packman_upWidthPixels;
-extern const uint8_t packman_upHeightPixels;
+extern uint8_t packman_upBitmaps[];
+//extern const uint8_t packman_upWidthPixels;
+//extern const uint8_t packman_upHeightPixels;
 
-extern const uint8_t packman_downBitmaps[];
-extern const uint8_t packman_downWidthPixels;
-extern const uint8_t packman_downHeightPixels;
+extern uint8_t packman_downBitmaps[];
+//extern const uint8_t packman_downWidthPixels;
+//extern const uint8_t packman_downHeightPixels;
 
 #endif
 //

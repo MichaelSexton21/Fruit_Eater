@@ -12,6 +12,10 @@
 
 TaskHandle_t Task_Packman_Handle;
 QueueHandle_t Queue_Packman;
+uint8_t x = 64;
+uint8_t y = 64;
+uint8_t* current_packman_Bitmap = packman_rightBitmaps;
+
 
 /******************************************************************************
  * This function will initialize Queue_Packman and initialize the LCD
@@ -29,30 +33,31 @@ void Task_Packman_Init(void)
 
 }
 
-
+void Draw_Packman(void){
+    lcd_draw_image(
+                x,
+                y,
+                packman_WidthPixels,
+                packman_HeightPixels,
+                current_packman_Bitmap,
+                Packman_Color,
+                LCD_COLOR_BLACK
+        );
+}
 /******************************************************************************
  * This task manages the movement of the space ship. The joystick task or the
  * console task can send messages to SHIP_QUEUE_LEN
  ******************************************************************************/
 void Task_Packman(void *pvParameters)
 {
-    uint8_t x = 64;
-    uint8_t y = 64;
+
     uint8_t dir = 0; // Which way to point packman
     SHIP_MSG_t direction;
     int speed = 25; // Delay between movements
     int pixelsToMove; // Number of pixels the spaceship needs to be moved
 
     // Draw the initial starting image of the spaceship.
-    lcd_draw_image(
-            x,
-            y,
-            packman_rightWidthPixels,
-            packman_rightHeightPixels,
-            packman_rightBitmaps,
-            Packman_Color,
-            LCD_COLOR_BLACK
-    );
+    Draw_Packman();
 
     // So the task never exits
     while(1)
@@ -75,16 +80,16 @@ void Task_Packman(void *pvParameters)
             pixelsToMove--; // decrement the loop control variable
 
         // Move the picture by one pixel with each loop and don't exceede the bounds of the screen
-        if(direction.cmd == SHIP_CMD_LEFT  && x > 27){
+        if(direction.cmd == SHIP_CMD_LEFT  && x > 12){
             dir = 0;
             x--;
-        }else if (direction.cmd == SHIP_CMD_RIGHT && x < 105){
+        }else if (direction.cmd == SHIP_CMD_RIGHT && x < 120){
             dir = 1;
             x++;
-        }else if (direction.cmd == SHIP_CMD_UP && y > 20){
+        }else if (direction.cmd == SHIP_CMD_UP && y > 15){
             dir = 2;
             y--;
-        }else if (direction.cmd == SHIP_CMD_DOWN && y < 114){
+        }else if (direction.cmd == SHIP_CMD_DOWN && y < 120){
             dir = 3;
             y++;
         }else{
@@ -97,47 +102,16 @@ void Task_Packman(void *pvParameters)
         }
         // draw the space ship
         if(dir==0){
-            lcd_draw_image(
-                        x,
-                        y,
-                        packman_leftWidthPixels,
-                        packman_leftHeightPixels,
-                        packman_leftBitmaps,
-                        Packman_Color,
-                        LCD_COLOR_BLACK
-                );
+            current_packman_Bitmap = packman_leftBitmaps;
         }else if(dir==1){
-            lcd_draw_image(
-                        x,
-                        y,
-                        packman_rightWidthPixels,
-                        packman_rightHeightPixels,
-                        packman_rightBitmaps,
-                        Packman_Color,
-                        LCD_COLOR_BLACK
-                );
+            current_packman_Bitmap = packman_rightBitmaps;
         }else if(dir==2){
-            lcd_draw_image(
-                        x,
-                        y,
-                        packman_upWidthPixels,
-                        packman_upHeightPixels,
-                        packman_upBitmaps,
-                        Packman_Color,
-                        LCD_COLOR_BLACK
-                );
+            current_packman_Bitmap = packman_upBitmaps;
         }else if(dir==3){
-            lcd_draw_image(
-                        x,
-                        y,
-                        packman_downWidthPixels,
-                        packman_downHeightPixels,
-                        packman_downBitmaps,
-                        Packman_Color,
-                        LCD_COLOR_BLACK
-                );
+            current_packman_Bitmap = packman_downBitmaps;
         }
-        dir = -1;
+        dir = 4;
+        Draw_Packman();
         // delay for speed ms
         vTaskDelay(pdMS_TO_TICKS(speed));
         }

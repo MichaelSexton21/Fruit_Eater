@@ -39,4 +39,6 @@ void Task_Packman_Init(void);
  ******************************************************************************/
 void Task_Packman(void *pvParameters);
 
+void Draw_Packman(void);
+
 #endif /* TASK_PACKMAN_H_ */

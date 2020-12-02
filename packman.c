@@ -1,7 +1,7 @@
 #include <packman.h>
 
 
-const uint8_t packman_upBitmaps[] =
+uint8_t packman_upBitmaps[] =
 {
 	0x00, 0x00, 0x00,
 	0x06, 0x00, 0x00, //      ##
@@ -26,14 +26,14 @@ const uint8_t packman_upBitmaps[] =
 };
 
 // Bitmap sizes for packman_up
-const uint8_t packman_upWidthPixels = 20;
-const uint8_t packman_upHeightPixels = 20;
+const uint8_t packman_WidthPixels = 20;
+const uint8_t packman_HeightPixels = 20;
 
 // 
 //  Image data for packman_down
 // 
 
-const uint8_t packman_downBitmaps[] =
+uint8_t packman_downBitmaps[] =
 	{
 		0x00, 0x00, 0x00,
 		0x03, 0xE0, 0x00, //       #####
@@ -57,11 +57,11 @@ const uint8_t packman_downBitmaps[] =
 		0x00, 0x00, 0x00
 	};
 
-// Bitmap sizes for packman_down
-const uint8_t packman_downWidthPixels = 20;
-const uint8_t packman_downHeightPixels = 20;
+//// Bitmap sizes for packman_down
+//const uint8_t packman_downWidthPixels = 20;
+//const uint8_t packman_downHeightPixels = 20;
 
-const uint8_t packman_leftBitmaps[] =
+uint8_t packman_leftBitmaps[] =
 {
       0x00, 0x00, 0x00, //
 	0x07, 0xE0, 0x00, //      ######       
@@ -84,12 +84,12 @@ const uint8_t packman_leftBitmaps[] =
 	0x03, 0xF8, 0x00, //       #######    
       0x00, 0x00, 0x00  //
 };
+//
+//// Bitmap sizes for packman_left
+//const uint8_t packman_leftWidthPixels = 20;
+//const uint8_t packman_leftHeightPixels = 20;
 
-// Bitmap sizes for packman_left
-const uint8_t packman_leftWidthPixels = 20;
-const uint8_t packman_leftHeightPixels = 20;
-
-const uint8_t packman_rightBitmaps[] =
+uint8_t packman_rightBitmaps[] =
 {
        0x00, 0x00, 0x00, //
 	0x01, 0xF8, 0x00, //        ######     
@@ -114,6 +114,6 @@ const uint8_t packman_rightBitmaps[] =
 
 };
 
-// Bitmap sizes for packman_right
-const uint8_t packman_rightWidthPixels = 20;
-const uint8_t packman_rightHeightPixels = 20;
+//// Bitmap sizes for packman_right
+//const uint8_t packman_rightWidthPixels = 20;
+//const uint8_t packman_rightHeightPixels = 20;
