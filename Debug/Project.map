@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.2                     
 ******************************************************************************
->> Linked Wed Dec  2 12:40:18 2020
+>> Linked Wed Dec  2 13:04:24 2020
 
 OUTPUT FILE NAME:   <Project.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000083a9
@@ -11,25 +11,25 @@ MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  MAIN                  00000000   00040000  00008948  000376b8  R  X
+  MAIN                  00000000   00040000  00008918  000376e8  R  X
   INFO                  00200000   00004000  00000000  00004000  R  X
-  SRAM_CODE             01000000   00010000  00008da8  00007258  RW X
-  SRAM_DATA             20000000   00010000  00008da8  00007258  RW  
+  SRAM_CODE             01000000   00010000  00008d00  00007300  RW X
+  SRAM_DATA             20000000   00010000  00008d00  00007300  RW  
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00008948   00008948    r-x
+00000000    00000000    00008918   00008918    r-x
   00000000    00000000    000000e4   000000e4    r-- .intvecs
   000000e4    000000e4    000085b0   000085b0    r-x .text
   00008694    00008694    0000010c   0000010c    r-- .const
-  000087a0    000087a0    000001a8   000001a8    r-- .cinit
-20000000    20000000    00008ba8   00000000    rw-
+  000087a0    000087a0    00000178   00000178    r-- .cinit
+20000000    20000000    00008b04   00000000    rw-
   20000000    20000000    00008364   00000000    rw- .bss
-  20008364    20008364    00000444   00000000    rw- .data
-  200087a8    200087a8    00000400   00000000    rw- .sysmem
+  20008368    20008368    00000400   00000000    rw- .sysmem
+  20008768    20008768    0000039c   00000000    rw- .data
 2000fe00    2000fe00    00000200   00000000    rw-
   2000fe00    2000fe00    00000200   00000000    rw- .stack
 
@@ -159,13 +159,12 @@ section   page    origin      length       input sections
                   00008797    00000001     --HOLE-- [fill = 0]
                   00008798    00000008     port.obj (.const)
 
-.cinit     0    000087a0    000001a8     
-                  000087a0    0000017e     (.cinit..data.load) [load image, compression = lzss]
-                  0000891e    00000002     --HOLE-- [fill = 0]
-                  00008920    0000000c     (__TI_handler_table)
-                  0000892c    00000004     --HOLE-- [fill = 0]
-                  00008930    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00008938    00000010     (__TI_cinit_table)
+.cinit     0    000087a0    00000178     
+                  000087a0    00000152     (.cinit..data.load) [load image, compression = lzss]
+                  000088f2    00000002     --HOLE-- [fill = 0]
+                  000088f4    0000000c     (__TI_handler_table)
+                  00008900    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00008908    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -200,34 +199,34 @@ section   page    origin      length       input sections
                   20008360    00000002     (.common:Lcd_ScreenHeigth)
                   20008362    00000002     (.common:Lcd_ScreenWidth)
 
-.data      0    20008364    00000444     UNINITIALIZED
-                  20008364    000000f0     rtsv7M4_T_le_v4SPD16_eabi.lib : defs.c.obj (.data:_ftable)
-                  20008454    000000e0     task_buzzer.obj (.data:Song)
-                  20008534    00000078     rtsv7M4_T_le_v4SPD16_eabi.lib : host_device.c.obj (.data:_device)
-                  200085ac    00000050                                   : host_device.c.obj (.data:_stream)
-                  200085fc    0000003c     packman.obj (.data:packman_downBitmaps)
-                  20008638    0000003c     packman.obj (.data:packman_leftBitmaps)
-                  20008674    0000003c     packman.obj (.data:packman_rightBitmaps)
-                  200086b0    0000003c     packman.obj (.data:packman_upBitmaps)
-                  200086ec    00000034     tasks.obj (.data)
-                  20008720    00000018     heap_4.obj (.data)
-                  20008738    00000018     port.obj (.data)
-                  20008750    00000010     rtsv7M4_T_le_v4SPD16_eabi.lib : defs.c.obj (.data)
-                  20008760    0000000c                                   : exit.c.obj (.data:$O1$$)
-                  2000876c    0000000c     timers.obj (.data)
-                  20008778    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.c.obj (.data:$O1$$)
-                  20008780    00000008                                   : memory.c.obj (.data:$O1$$)
-                  20008788    00000008     task_accelerometer.obj (.data)
-                  20008790    00000008     task_packman.obj (.data)
-                  20008798    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : errno.c.obj (.data)
-                  2000879c    00000004                                   : strtok.c.obj (.data)
-                  200087a0    00000004     system_msp432p401r.obj (.data)
-                  200087a4    00000002     task_console.obj (.data)
-                  200087a6    00000002     task_light_sensor.obj (.data)
+.sysmem    0    20008368    00000400     UNINITIALIZED
+                  20008368    00000010     rtsv7M4_T_le_v4SPD16_eabi.lib : memory.c.obj (.sysmem)
+                  20008378    000003f0     --HOLE--
 
-.sysmem    0    200087a8    00000400     UNINITIALIZED
-                  200087a8    00000010     rtsv7M4_T_le_v4SPD16_eabi.lib : memory.c.obj (.sysmem)
-                  200087b8    000003f0     --HOLE--
+.data      0    20008768    0000039c     UNINITIALIZED
+                  20008768    000000f0     rtsv7M4_T_le_v4SPD16_eabi.lib : defs.c.obj (.data:_ftable)
+                  20008858    00000078                                   : host_device.c.obj (.data:_device)
+                  200088d0    00000050                                   : host_device.c.obj (.data:_stream)
+                  20008920    0000003c     packman.obj (.data:packman_downBitmaps)
+                  2000895c    0000003c     packman.obj (.data:packman_leftBitmaps)
+                  20008998    0000003c     packman.obj (.data:packman_rightBitmaps)
+                  200089d4    0000003c     packman.obj (.data:packman_upBitmaps)
+                  20008a10    00000038     task_buzzer.obj (.data:Song)
+                  20008a48    00000034     tasks.obj (.data)
+                  20008a7c    00000018     heap_4.obj (.data)
+                  20008a94    00000018     port.obj (.data)
+                  20008aac    00000010     rtsv7M4_T_le_v4SPD16_eabi.lib : defs.c.obj (.data)
+                  20008abc    0000000c                                   : exit.c.obj (.data:$O1$$)
+                  20008ac8    0000000c     timers.obj (.data)
+                  20008ad4    00000008     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.c.obj (.data:$O1$$)
+                  20008adc    00000008                                   : memory.c.obj (.data:$O1$$)
+                  20008ae4    00000008     task_accelerometer.obj (.data)
+                  20008aec    00000008     task_packman.obj (.data)
+                  20008af4    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : errno.c.obj (.data)
+                  20008af8    00000004                                   : strtok.c.obj (.data)
+                  20008afc    00000004     system_msp432p401r.obj (.data)
+                  20008b00    00000002     task_console.obj (.data)
+                  20008b02    00000002     task_light_sensor.obj (.data)
 
 .stack     0    2000fe00    00000200     UNINITIALIZED
                   2000fe00    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
@@ -242,10 +241,10 @@ MODULE SUMMARY
        ------                        ----    -------   -------
     .\
        lcd.obj                       1348    0         8      
-       task_buzzer.obj               464     0         456    
        system_msp432p401r.obj        852     0         8      
        task_light_sensor.obj         752     0         12     
        task_console.obj              660     0         44     
+       task_buzzer.obj               464     0         120    
        task_accelerometer.obj        504     0         32     
        packman.obj                   0       2         480    
        task_packman.obj              444     0         32     
@@ -253,7 +252,7 @@ MODULE SUMMARY
        i2c.obj                       448     0         0      
        startup_msp432p401r_ccs.obj   14      228       0      
     +--+-----------------------------+-------+---------+---------+
-       Total:                        5958    230       1072   
+       Total:                        5958    230       736    
                                                               
     .\FreeRTOS\
        heap_4.obj                    1068    0         65600  
@@ -340,21 +339,21 @@ MODULE SUMMARY
                                                               
        Heap:                         0       0         2048   
        Stack:                        0       0         1024   
-       Linker Generated:             0       418       0      
+       Linker Generated:             0       374       0      
     +--+-----------------------------+-------+---------+---------+
-       Grand Total:                  34207   913       72528  
+       Grand Total:                  34207   869       72192  
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00008938 records: 2, size/record: 8, table size: 16
-	.data: load addr=000087a0, load size=0000017e bytes, run addr=20008364, run size=00000444 bytes, compression=lzss
-	.bss: load addr=00008930, load size=00000008 bytes, run addr=20000000, run size=00008364 bytes, compression=zero_init
+__TI_cinit_table @ 00008908 records: 2, size/record: 8, table size: 16
+	.data: load addr=000087a0, load size=00000152 bytes, run addr=20008768, run size=0000039c bytes, compression=lzss
+	.bss: load addr=00008900, load size=00000008 bytes, run addr=20000000, run size=00008364 bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00008920 records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 000088f4 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
@@ -410,8 +409,8 @@ address   name
 00008101  HOSTunlink                         
 00007e41  HOSTwrite                          
 0000865d  HardFault_Handler                  
-20008788  JOYSTICK_X_DIR                     
-2000878c  JOYSTICK_Y_DIR                     
+20008ae4  JOYSTICK_X_DIR                     
+20008ae8  JOYSTICK_Y_DIR                     
 20008360  Lcd_ScreenHeigth                   
 20008362  Lcd_ScreenWidth                    
 0000865d  MemManage_Handler                  
@@ -426,18 +425,18 @@ address   name
 0000865d  PORT5_IRQHandler                   
 0000865d  PORT6_IRQHandler                   
 0000865d  PSS_IRQHandler                     
-200087a6  Packman_Color                      
+20008b02  Packman_Color                      
 0000865d  PendSV_Handler                     
 20008340  Queue_Packman                      
 0000865d  RTC_C_IRQHandler                   
 20008314  RX_ARRAY                           
-200087a4  RX_INDEX                           
+20008b00  RX_INDEX                           
 00008651  Reset_Handler                      
 0000865d  SVC_Handler                        
 20008344  Sem_Console                        
-20008454  Song                               
+20008a10  Song                               
 0000865d  SysTick_Handler                    
-200087a0  SystemCoreClock                    
+20008afc  SystemCoreClock                    
 00005235  SystemCoreClockUpdate              
 000054ad  SystemInit                         
 000063c3  T32_1_wait                         
@@ -476,20 +475,20 @@ address   name
 20010000  __STACK_END                        
 00000200  __STACK_SIZE                       
 00000400  __SYSMEM_SIZE                      
-00008938  __TI_CINIT_Base                    
-00008948  __TI_CINIT_Limit                   
-00008920  __TI_Handler_Table_Base            
-0000892c  __TI_Handler_Table_Limit           
+00008908  __TI_CINIT_Base                    
+00008918  __TI_CINIT_Limit                   
+000088f4  __TI_Handler_Table_Base            
+00008900  __TI_Handler_Table_Limit           
 00008145  __TI_auto_init_nobinit_nopinit     
 00008341  __TI_cleanup                       
-20008760  __TI_cleanup_ptr                   
+20008abc  __TI_cleanup_ptr                   
 00007909  __TI_closefile                     
 00007b31  __TI_decompress_lzss               
 00008643  __TI_decompress_none               
 00007f95  __TI_doflush                       
-20008764  __TI_dtors_ptr                     
-20008768  __TI_enable_exit_profile_output    
-20008750  __TI_ft_end                        
+20008ac0  __TI_dtors_ptr                     
+20008ac4  __TI_enable_exit_profile_output    
+20008aac  __TI_ft_end                        
 00007eef  __TI_ltoa                          
 ffffffff  __TI_pprof_out_hndl                
 00003299  __TI_printfi                       
@@ -523,9 +522,9 @@ ffffffff  __TI_prof_data_start
 0000788f  __aeabi_memset                     
 0000788f  __aeabi_memset4                    
 0000788f  __aeabi_memset8                    
-2000875c  __aeabi_stderr                     
-20008754  __aeabi_stdin                      
-20008758  __aeabi_stdout                     
+20008ab8  __aeabi_stderr                     
+20008ab0  __aeabi_stdin                      
+20008ab4  __aeabi_stdout                     
 00008551  __aeabi_ui2d                       
 000076eb  __aeabi_uldivmod                   
 ffffffff  __binit__                          
@@ -536,15 +535,15 @@ UNDEFED   __mpu_init
 20000000  __stop___llvm_prf_cnts             
 000083a9  _c_int00_noargs                    
 00008694  _ctypes_                           
-20008534  _device                            
-20008364  _ftable                            
-20008778  _lock                              
+20008858  _device                            
+20008768  _ftable                            
+20008ad4  _lock                              
 00003ce7  _nop                               
-200085ac  _stream                            
-200087a8  _sys_memory                        
+200088d0  _stream                            
+20008368  _sys_memory                        
 UNDEFED   _system_post_cinit                 
 0000868d  _system_pre_init                   
-2000877c  _unlock                            
+20008ad8  _unlock                            
 00008691  abort                              
 00007105  aligned_alloc                      
 00007fe1  atoi                               
@@ -553,10 +552,10 @@ ffffffff  binit
 00007d8d  close                              
 000085a9  copysign                           
 000085a9  copysignl                          
-20008794  current_packman_Bitmap             
+20008af0  current_packman_Bitmap             
 000013fd  eTaskConfirmSleepModeStatus        
 00000539  eTaskGetState                      
-20008798  errno                              
+20008af4  errno                              
 0000802d  exit                               
 000083dd  finddevice                         
 00005977  fputc                              
@@ -584,10 +583,10 @@ ffffffff  binit
 00007895  memset                             
 00008796  packman_HeightPixels               
 00008795  packman_WidthPixels                
-200085fc  packman_downBitmaps                
-20008638  packman_leftBitmaps                
-20008674  packman_rightBitmaps               
-200086b0  packman_upBitmaps                  
+20008920  packman_downBitmaps                
+2000895c  packman_leftBitmaps                
+20008998  packman_rightBitmaps               
+200089d4  packman_upBitmaps                  
 20008338  parmbuf                            
 00000bd5  pcTaskGetName                      
 00003f43  pcTimerGetName                     
@@ -598,7 +597,7 @@ ffffffff  binit
 000014a1  pvTaskGetThreadLocalStoragePointer 
 00001a55  pvTaskIncrementMutexHeldCount      
 000043fd  pvTimerGetTimerID                  
-200086ec  pxCurrentTCB                       
+20008a48  pxCurrentTCB                       
 000049d1  pxPortInitialiseStack              
 0000843d  remove                             
 00006ff5  scalbn                             
@@ -682,7 +681,7 @@ ffffffff  binit
 00004467  vTimerSetTimerNumber               
 00008631  wcslen                             
 000084e5  write                              
-20008790  x                                  
+20008aec  x                                  
 0000500d  xPortGetFreeHeapSize               
 00005013  xPortGetMinimumEverFreeHeapSize    
 000074e9  xPortPendSVHandler                 
@@ -730,7 +729,7 @@ ffffffff  binit
 00003e6d  xTimerGetPeriod                    
 00003e4b  xTimerGetTimerDaemonTaskHandle     
 000043c1  xTimerIsTimerActive                
-20008791  y                                  
+20008aed  y                                  
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -1045,10 +1044,10 @@ address   name
 00008795  packman_WidthPixels                
 00008796  packman_HeightPixels               
 00008798  ulMaxSyscallInterruptPriority      
-00008920  __TI_Handler_Table_Base            
-0000892c  __TI_Handler_Table_Limit           
-00008938  __TI_CINIT_Base                    
-00008948  __TI_CINIT_Limit                   
+000088f4  __TI_Handler_Table_Base            
+00008900  __TI_Handler_Table_Limit           
+00008908  __TI_CINIT_Base                    
+00008918  __TI_CINIT_Limit                   
 20000000  __start___llvm_prf_cnts            
 20000000  __stop___llvm_prf_cnts             
 20008000  __CIOBUF_                          
@@ -1065,34 +1064,34 @@ address   name
 2000835c  Task_Packman_Handle                
 20008360  Lcd_ScreenHeigth                   
 20008362  Lcd_ScreenWidth                    
-20008364  _ftable                            
-20008454  Song                               
-20008534  _device                            
-200085ac  _stream                            
-200085fc  packman_downBitmaps                
-20008638  packman_leftBitmaps                
-20008674  packman_rightBitmaps               
-200086b0  packman_upBitmaps                  
-200086ec  pxCurrentTCB                       
-20008750  __TI_ft_end                        
-20008754  __aeabi_stdin                      
-20008758  __aeabi_stdout                     
-2000875c  __aeabi_stderr                     
-20008760  __TI_cleanup_ptr                   
-20008764  __TI_dtors_ptr                     
-20008768  __TI_enable_exit_profile_output    
-20008778  _lock                              
-2000877c  _unlock                            
-20008788  JOYSTICK_X_DIR                     
-2000878c  JOYSTICK_Y_DIR                     
-20008790  x                                  
-20008791  y                                  
-20008794  current_packman_Bitmap             
-20008798  errno                              
-200087a0  SystemCoreClock                    
-200087a4  RX_INDEX                           
-200087a6  Packman_Color                      
-200087a8  _sys_memory                        
+20008368  _sys_memory                        
+20008768  _ftable                            
+20008858  _device                            
+200088d0  _stream                            
+20008920  packman_downBitmaps                
+2000895c  packman_leftBitmaps                
+20008998  packman_rightBitmaps               
+200089d4  packman_upBitmaps                  
+20008a10  Song                               
+20008a48  pxCurrentTCB                       
+20008aac  __TI_ft_end                        
+20008ab0  __aeabi_stdin                      
+20008ab4  __aeabi_stdout                     
+20008ab8  __aeabi_stderr                     
+20008abc  __TI_cleanup_ptr                   
+20008ac0  __TI_dtors_ptr                     
+20008ac4  __TI_enable_exit_profile_output    
+20008ad4  _lock                              
+20008ad8  _unlock                            
+20008ae4  JOYSTICK_X_DIR                     
+20008ae8  JOYSTICK_Y_DIR                     
+20008aec  x                                  
+20008aed  y                                  
+20008af0  current_packman_Bitmap             
+20008af4  errno                              
+20008afc  SystemCoreClock                    
+20008b00  RX_INDEX                           
+20008b02  Packman_Color                      
 2000fe00  __stack                            
 20010000  __STACK_END                        
 4000480c  WDTCTL_SYM                         

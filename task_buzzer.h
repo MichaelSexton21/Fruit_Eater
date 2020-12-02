@@ -109,7 +109,7 @@
 #define NOTE_A2 218181 // 110.000 Hz
 #define NOTE_G2S 231155 // 103.826 Hz
 #define NOTE_G2 244900 // 97.9989 Hz
-#define NOTE_F3S 259463 // 92.4986 Hz
+#define NOTE_F2S 259463 // 92.4986 Hz
 #define NOTE_F2 274891 // 87.3071 Hz
 #define NOTE_E2 291237 // 82.4069 Hz
 #define NOTE_D2S 308555 // 77.7817 Hz
@@ -137,9 +137,9 @@
 // DO NOT MODIFY ANYTHING BELOW
 //*****************************************************************************
 #define MEASURE_DURATION 12000000    // 500 milliseconds
-#define MEASURE_RATIO           2    // 2/4 time
+#define MEASURE_RATIO           4    // 2/4 time
 #define DELAY_AMOUNT       240000    // 10  milliseconds
-#define SONG_NUM_NOTES 28
+#define SONG_NUM_NOTES 7
 
 extern TaskHandle_t Task_Buzzer_Handle;
 
