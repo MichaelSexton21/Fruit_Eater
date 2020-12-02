@@ -139,7 +139,7 @@
 #define MEASURE_DURATION 12000000    // 500 milliseconds
 #define MEASURE_RATIO           4    // 2/4 time
 #define DELAY_AMOUNT       240000    // 10  milliseconds
-#define SONG_NUM_NOTES 7
+#define SONG_NUM_NOTES 31
 
 extern TaskHandle_t Task_Buzzer_Handle;
 

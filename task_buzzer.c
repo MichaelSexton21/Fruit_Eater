@@ -39,13 +39,44 @@ Note_t Song[] =
 //    {NOTE_G6,ONE_HALF,false},
 //    {NOTE_G6,ONE_HALF,true}
 
- {NOTE_C5,ONE_QUARTER,true},  // Tone, Time, Delay
- {NOTE_F5,ONE_QUARTER,true},
- {NOTE_C5,ONE_QUARTER,true},
- {NOTE_A4,ONE_QUARTER,true},
- {NOTE_C5,ONE_QUARTER,true},
- {NOTE_F5,ONE_QUARTER,true},
- {NOTE_C5,ONE_HALF,true}
+    {NOTE_C5,ONE_QUARTER,true},  // Tone, Time, Delay
+    {NOTE_F5,ONE_QUARTER,true},
+    {NOTE_C5,ONE_QUARTER,true},
+    {NOTE_A4,ONE_QUARTER,true},
+
+    {NOTE_C5,ONE_QUARTER,true},
+    {NOTE_F5,ONE_QUARTER,true},
+    {NOTE_C5,ONE_HALF,true},
+
+    {NOTE_C5,ONE_QUARTER,true},
+    {NOTE_F5,ONE_QUARTER,true},
+    {NOTE_C5,ONE_QUARTER,true},
+    {NOTE_F5,ONE_QUARTER,true},
+
+    {NOTE_A5,ONE_QUARTER,true},
+    {NOTE_G5,ONE_QUARTER,true},
+    {NOTE_F5,ONE_EIGTH,true},
+    {NOTE_E5,ONE_EIGTH,true},
+    {NOTE_D5,ONE_EIGTH,true},
+    {NOTE_C5S,ONE_EIGTH,true},
+
+    {NOTE_C5,ONE_QUARTER,true},
+    {NOTE_F5,ONE_QUARTER,true},
+    {NOTE_C5,ONE_QUARTER,true},
+    {NOTE_A4,ONE_QUARTER,true},
+
+    {NOTE_C5,ONE_QUARTER,true},
+    {NOTE_F5,ONE_QUARTER,true},
+    {NOTE_C5,ONE_HALF,true},
+
+    {NOTE_F5,ONE_QUARTER,true},
+    {NOTE_D5,ONE_EIGTH,true},
+    {NOTE_C5,ONE_QUARTER,true},
+    {NOTE_A4S,ONE_QUARTER,true},
+
+    {NOTE_A4,ONE_QUARTER,true},
+    {NOTE_G4,ONE_QUARTER,true},
+    {NOTE_C5,ONE_HALF,false}
 // {NOTE_C6,ONE_QUARTER,true},
 // {NOTE_F6,ONE_QUARTER,true},
 // {NOTE_A6,ONE_QUARTER,true},
