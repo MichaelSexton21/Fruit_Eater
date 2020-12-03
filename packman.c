@@ -25,13 +25,9 @@ uint8_t packman_upBitmaps[] =
 	0x00, 0x00, 0x00
 };
 
-// Bitmap sizes for packman_up
+// Bitmap sizes for packman
 const uint8_t packman_WidthPixels = 24;
 const uint8_t packman_HeightPixels = 20;
-
-// 
-//  Image data for packman_down
-// 
 
 uint8_t packman_downBitmaps[] =
 	{
@@ -57,10 +53,6 @@ uint8_t packman_downBitmaps[] =
 		0x00, 0x00, 0x00
 	};
 
-//// Bitmap sizes for packman_down
-//const uint8_t packman_downWidthPixels = 20;
-//const uint8_t packman_downHeightPixels = 20;
-
 uint8_t packman_leftBitmaps[] =
 {
       0x00, 0x00, 0x00, //
@@ -83,11 +75,7 @@ uint8_t packman_leftBitmaps[] =
 	0x07, 0xFC, 0x00, //      #########    
 	0x03, 0xF8, 0x00, //       #######    
       0x00, 0x00, 0x00  //
-};
-//
-//// Bitmap sizes for packman_left
-//const uint8_t packman_leftWidthPixels = 20;
-//const uint8_t packman_leftHeightPixels = 20;
+}
 
 uint8_t packman_rightBitmaps[] =
 {
@@ -114,12 +102,8 @@ uint8_t packman_rightBitmaps[] =
 
 };
 
-//// Bitmap sizes for packman_right
-//const uint8_t packman_rightWidthPixels = 20;
-//const uint8_t packman_rightHeightPixels = 20;
 
-
-const uint_8 orangeBitmaps =
+uint_8 orangeBitmaps =
 {
 	0x70, 0x00, //  ###        
 	0x78, 0x00, //  ####       
@@ -146,7 +130,7 @@ const uint_8 orangeHeightPixels = 13;
 //  Image data for apple
 // 
 
-const uint_8 appleBitmaps =
+uint_8 appleBitmaps =
 {
 	0x11, 0x00, //    #   #    
 	0x0E, 0x00, //     ###     
@@ -173,7 +157,7 @@ const uint_8 appleHeightPixels = 13;
 //  Image data for bannana
 // 
 
-const uint_8 bannanaBitmaps =
+uint_8 bannanaBitmaps =
 {
 	0x02, 0x00, //       #      
 	0x00, 0x00, //              
