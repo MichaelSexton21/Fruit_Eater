@@ -1,7 +1,7 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.2                     
 ******************************************************************************
->> Linked Wed Dec  2 22:52:47 2020
+>> Linked Wed Dec  2 22:58:38 2020
 
 OUTPUT FILE NAME:   <Project.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000083f1
@@ -366,8 +366,8 @@ address   name
 20008a90  ACC_X_DIR                          
 20008a94  ACC_Y_DIR                          
 20008a98  ACC_Z_DIR                          
-00005a5d  ADC14_IRQHandler                   
-00005a5d  ADC14_IRQHandler                   
+00005a5b  ADC14_IRQHandler                   
+00005a5b  ADC14_IRQHandler                   
 000086a5  AES256_IRQHandler                  
 000086a5  BusFault_Handler                   
 000069fb  Buzzer_Off                         
@@ -870,8 +870,8 @@ address   name
 000058e3  Task_Accelerometer_Init            
 0000596f  Task_Accelerometer_Timer           
 00005985  Task_Accelerometer                 
-00005a5d  ADC14_IRQHandler                   
-00005a5d  ADC14_IRQHandler                   
+00005a5b  ADC14_IRQHandler                   
+00005a5b  ADC14_IRQHandler                   
 00005be9  Task_Console_Init                  
 00005c17  fputc                              
 00005c35  EUSCIA0_IRQHandler                 

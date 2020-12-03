@@ -107,10 +107,10 @@ void Task_Accelerometer(void *pvParameters)
              * Set the dir variable to one of the following values based
              * on the values of JOYSTICK_X_DIR and JOYSTIC_Y_DIR
              */
-            if(ACC_X_DIR < 1700){
+            if(ACC_X_DIR < 2000){
                 printf("Left");
                direction.cmd = PACKMAN_CMD_LEFT;
-            }else if(ACC_X_DIR > 2300){
+            }else if(ACC_X_DIR > 2150){
                 printf("Right");
                 direction.cmd = PACKMAN_CMD_RIGHT;
             }else if(ACC_Y_DIR < 2020){
