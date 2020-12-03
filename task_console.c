@@ -153,7 +153,7 @@ void Task_Console_Bottom_Half(void *pvParameters)
 {
     while(1){
 
-        SHIP_MSG_t direction;
+        PACKMAN_MSG_t direction;
         uint8_t value;
 
         // wait task to be called
@@ -168,15 +168,15 @@ void Task_Console_Bottom_Half(void *pvParameters)
 
         //Depending on which command was send, send it to the queue
         if(RX_ARRAY[0] == 'L'){
-           direction.cmd = SHIP_CMD_LEFT;
+           direction.cmd = PACKMAN_CMD_LEFT;
         }else if(RX_ARRAY[0] == 'R'){
-           direction.cmd = SHIP_CMD_RIGHT;
+           direction.cmd = PACKMAN_CMD_RIGHT;
         }else if(RX_ARRAY[0] == 'U'){
-            direction.cmd = SHIP_CMD_UP;
+            direction.cmd = PACKMAN_CMD_UP;
         }else if(RX_ARRAY[0] == 'D'){
-            direction.cmd = SHIP_CMD_DOWN;
+            direction.cmd = PACKMAN_CMD_DOWN;
         }else if(RX_ARRAY[0] == 'S'){
-            direction.cmd = SHIP_CMD_SPEED;
+            direction.cmd = PACKMAN_CMD_SPEED;
         }
         // set the value of the direction
         direction.value = value;

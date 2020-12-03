@@ -49,13 +49,6 @@
   ******************************************************************************/
  uint32_t OPT3001_get_lux(void)
  {
-//     xSemaphoreTake(Sem_Console, portMAX_DELAY);
-//     printf("OPT3001_get_lux\n\r");
-//     xSemaphoreGive(Sem_Console);
-
-     /* Specify slave address for OPT3001 */
-     //i2c_set_slave_address(I2C_OPT3001_ADDRESS);
-
         uint16_t exponent = 0;
         uint16_t fractional_result = 0;
         uint32_t result = 0;
@@ -69,11 +62,6 @@
         fractional_result = (raw&0x0FFF);
 
         result = 0.01*(2<<exponent)*fractional_result;
-
-
-//        xSemaphoreTake(Sem_Console, portMAX_DELAY);
-//         printf("end of OPT3001_get_lux\n\r");
-//         xSemaphoreGive(Sem_Console);
 
         return result;
  }
@@ -96,6 +84,7 @@ void print_device_id(){
 }
 
 void print_manufacturer_id(){
+
     xSemaphoreTake(Sem_Console, portMAX_DELAY);
 
     printf("\n\r");

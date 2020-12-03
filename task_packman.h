@@ -12,18 +12,18 @@
 #include <main.h>
 
 typedef enum {
-    SHIP_CMD_LEFT,
-    SHIP_CMD_RIGHT,
-    SHIP_CMD_UP,
-    SHIP_CMD_DOWN,
-    SHIP_CMD_CENTER,
-    SHIP_CMD_SPEED
+    PACKMAN_CMD_LEFT,
+    PACKMAN_CMD_RIGHT,
+    PACKMAN_CMD_UP,
+    PACKMAN_CMD_DOWN,
+    PACKMAN_CMD_CENTER,
+    PACKMAN_CMD_SPEED
 } SHIP_CMD_t;
 
 typedef struct {
     SHIP_CMD_t cmd;
     uint8_t     value;
-}SHIP_MSG_t;
+}PACKMAN_MSG_t;
 
 extern TaskHandle_t Task_Packman_Handle;
 extern QueueHandle_t Queue_Packman;

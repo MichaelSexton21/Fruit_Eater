@@ -10,34 +10,6 @@ TaskHandle_t Task_Buzzer_Handle;
 
 Note_t Song[] =
 {
-//    {NOTE_C6,ONE_QUARTER,true},  // Tone, Time, Delay
-//    {NOTE_B5,ONE_QUARTER,true},
-//    {NOTE_D6,ONE_QUARTER,true},
-//    {NOTE_C6,ONE_QUARTER,true},
-//    {NOTE_F6,ONE_QUARTER,true},
-//    {NOTE_E6,ONE_QUARTER,true},
-//    {NOTE_G6,ONE_QUARTER,true},
-//    {NOTE_F6,ONE_QUARTER,true},
-//    {NOTE_A6,ONE_QUARTER,true},
-//    {NOTE_A6,ONE_QUARTER,true},
-//    {NOTE_A6,ONE_QUARTER,true},
-//    {NOTE_A6,ONE_QUARTER,true},
-//    {NOTE_A6,ONE_HALF,false},
-//    {NOTE_A6,ONE_HALF,true},
-//    {NOTE_G6,ONE_QUARTER,true},
-//    {NOTE_F6S,ONE_QUARTER,true},
-//    {NOTE_G6,ONE_QUARTER,true},
-//    {NOTE_A6,ONE_QUARTER,true},
-//    {NOTE_F6,ONE_QUARTER,true},
-//    {NOTE_G6,ONE_QUARTER,true},
-//    {NOTE_A6,ONE_QUARTER,true},
-//    {NOTE_F6,ONE_QUARTER,true},
-//    {NOTE_E6,ONE_QUARTER,true},
-//    {NOTE_D6,ONE_QUARTER,true},
-//    {NOTE_E6,ONE_QUARTER,true},
-//    {NOTE_F6,ONE_QUARTER,true},
-//    {NOTE_G6,ONE_HALF,false},
-//    {NOTE_G6,ONE_HALF,true}
 
     {NOTE_C5,ONE_QUARTER,true},  // Tone, Time, Delay
     {NOTE_F5,ONE_QUARTER,true},
@@ -77,28 +49,7 @@ Note_t Song[] =
     {NOTE_A4,ONE_QUARTER,true},
     {NOTE_G4,ONE_QUARTER,true},
     {NOTE_F4,ONE_HALF,false}
-// {NOTE_C6,ONE_QUARTER,true},
-// {NOTE_F6,ONE_QUARTER,true},
-// {NOTE_A6,ONE_QUARTER,true},
-// {NOTE_A6,ONE_QUARTER,true},
-// {NOTE_A6,ONE_QUARTER,true},
-// {NOTE_A6,ONE_QUARTER,true},
-// {NOTE_A6,ONE_HALF,false},
-// {NOTE_A6,ONE_HALF,true},
-// {NOTE_G6,ONE_QUARTER,true},
-// {NOTE_F6S,ONE_QUARTER,true},
-// {NOTE_G6,ONE_QUARTER,true},
-// {NOTE_A6,ONE_QUARTER,true},
-// {NOTE_F6,ONE_QUARTER,true},
-// {NOTE_G6,ONE_QUARTER,true},
-// {NOTE_A6,ONE_QUARTER,true},
-// {NOTE_F6,ONE_QUARTER,true},
-// {NOTE_E6,ONE_QUARTER,true},
-// {NOTE_D6,ONE_QUARTER,true},
-// {NOTE_E6,ONE_QUARTER,true},
-// {NOTE_F6,ONE_QUARTER,true},
-// {NOTE_G6,ONE_HALF,false},
-// {NOTE_G6,ONE_HALF,true}
+
 };
 
 
@@ -285,7 +236,7 @@ void Task_Buzzer(void)
         int i;
         for(i = 0; i < SONG_NUM_NOTES; i++)
         {
-            buzzer_play_note(i);
+            //buzzer_play_note(i);
         }
 
         // Turn the Buzzer off once playing

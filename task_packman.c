@@ -8,7 +8,7 @@
 
 #include <main.h>
 
-#define SHIP_QUEUE_LEN  2
+#define PACKMAN_QUEUE_LEN  2
 
 TaskHandle_t Task_Packman_Handle;
 QueueHandle_t Queue_Packman;
@@ -23,7 +23,7 @@ uint8_t* current_packman_Bitmap = packman_rightBitmaps;
 void Task_Packman_Init(void)
 {
     // Initiate Queue_Packman
-    Queue_Packman = xQueueCreate(SHIP_QUEUE_LEN,sizeof(SHIP_MSG_t));
+    Queue_Packman = xQueueCreate(PACKMAN_QUEUE_LEN,sizeof(PACKMAN_MSG_t));
     // Initialize the Port
     HAL_LCD_PortInit();
     // Initialize the SPI interface
@@ -52,7 +52,7 @@ void Task_Packman(void *pvParameters)
 {
 
     uint8_t dir = 0; // Which way to point packman
-    SHIP_MSG_t direction;
+    PACKMAN_MSG_t direction;
     int speed = 25; // Delay between movements
     int pixelsToMove; // Number of pixels the spaceship needs to be moved
 
@@ -64,10 +64,10 @@ void Task_Packman(void *pvParameters)
     {
         // Wait for data to be in the queue
         xQueueReceive(Queue_Packman, &direction, portMAX_DELAY);
-        printf("Task_Packman\n\r");
+        //printf("Task_Packman\n\r");
 
         // if the direction is speed, update the speed and don't move
-        if(direction.cmd == SHIP_CMD_SPEED){
+        if(direction.cmd == PACKMAN_CMD_SPEED){
             speed=direction.value;
             pixelsToMove = 0;
         }else{
@@ -80,16 +80,16 @@ void Task_Packman(void *pvParameters)
             pixelsToMove--; // decrement the loop control variable
 
         // Move the picture by one pixel with each loop and don't exceede the bounds of the screen
-        if(direction.cmd == SHIP_CMD_LEFT  && x > 12){
+        if(direction.cmd == PACKMAN_CMD_LEFT  && x > 12){
             dir = 0;
             x--;
-        }else if (direction.cmd == SHIP_CMD_RIGHT && x < 120){
+        }else if (direction.cmd == PACKMAN_CMD_RIGHT && x < 120){
             dir = 1;
             x++;
-        }else if (direction.cmd == SHIP_CMD_UP && y > 15){
+        }else if (direction.cmd == PACKMAN_CMD_UP && y > 15){
             dir = 2;
             y--;
-        }else if (direction.cmd == SHIP_CMD_DOWN && y < 120){
+        }else if (direction.cmd == PACKMAN_CMD_DOWN && y < 120){
             dir = 3;
             y++;
         }else{

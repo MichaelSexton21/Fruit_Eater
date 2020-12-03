@@ -11,9 +11,6 @@
 
 #include "main.h"
 
-#define VOLT_0P85  1056      // 0.85 /(3.3/4096)
-#define VOLT_2P50  3103      // 2.50 /(3.3/4096)
-
 extern TaskHandle_t Task_Accelerometer_Handle;
 extern TaskHandle_t Task_Accelerometer_Timer_Handle;
 
