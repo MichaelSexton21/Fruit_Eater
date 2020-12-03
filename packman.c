@@ -26,7 +26,7 @@ uint8_t packman_upBitmaps[] =
 };
 
 // Bitmap sizes for packman_up
-const uint8_t packman_WidthPixels = 20;
+const uint8_t packman_WidthPixels = 24;
 const uint8_t packman_HeightPixels = 20;
 
 // 
