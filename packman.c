@@ -75,7 +75,7 @@ uint8_t packman_leftBitmaps[] =
 	0x07, 0xFC, 0x00, //      #########    
 	0x03, 0xF8, 0x00, //       #######    
       0x00, 0x00, 0x00  //
-}
+};
 
 uint8_t packman_rightBitmaps[] =
 {
@@ -103,7 +103,7 @@ uint8_t packman_rightBitmaps[] =
 };
 
 
-uint_8 orangeBitmaps =
+uint8_t orangeBitmaps[] =
 {
 	0x70, 0x00, //  ###        
 	0x78, 0x00, //  ####       
@@ -121,8 +121,8 @@ uint_8 orangeBitmaps =
 };
 
 // Bitmap sizes for orange
-const uint_8 orangeWidthPages = 2;
-const uint_8 orangeHeightPixels = 13;
+const uint8_t orangeWidthPages = 2;
+const uint8_t orangeHeightPixels = 13;
 
 
 
@@ -130,7 +130,7 @@ const uint_8 orangeHeightPixels = 13;
 //  Image data for apple
 // 
 
-uint_8 appleBitmaps =
+uint8_t appleBitmaps[] =
 {
 	0x11, 0x00, //    #   #    
 	0x0E, 0x00, //     ###     
@@ -148,8 +148,8 @@ uint_8 appleBitmaps =
 };
 
 // Bitmap sizes for apple
-const uint_8 appleWidthPages = 2;
-const uint_8 appleHeightPixels = 13;
+const uint8_t appleWidthPages = 2;
+const uint8_t appleHeightPixels = 13;
 
 
 
@@ -157,7 +157,7 @@ const uint_8 appleHeightPixels = 13;
 //  Image data for bannana
 // 
 
-uint_8 bannanaBitmaps =
+uint8_t bannanaBitmaps[] =
 {
 	0x02, 0x00, //       #      
 	0x00, 0x00, //              
@@ -174,7 +174,7 @@ uint_8 bannanaBitmaps =
 };
 
 // Bitmap sizes for bannana
-const uint_8 bannanaWidthPages = 2;
-const uint_8 bannanaHeightPixels = 12;
+const uint8_t bannanaWidthPages = 2;
+const uint8_t bannanaHeightPixels = 12;
 
 

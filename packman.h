@@ -20,19 +20,19 @@ extern uint8_t packman_downBitmaps[];
 //extern const uint8_t packman_downHeightPixels;
 
 // Bitmap info for orange
-extern const uint_8 orangeBitmaps;
-extern const uint_8 orangeWidthPages;
-extern const uint_8 orangeHeightPixels;
+extern uint8_t orangeBitmaps[];
+extern const uint8_t orangeWidthPages;
+extern const uint8_t orangeHeightPixels;
 
 // Bitmap info for apple
-extern const uint_8 appleBitmaps;
-extern const uint_8 appleWidthPages;
-extern const uint_8 appleHeightPixels;
+extern uint8_t appleBitmaps[];
+extern const uint8_t appleWidthPages;
+extern const uint8_t appleHeightPixels;
 
 // Bitmap info for bannana
-extern const uint_8 bannanaBitmaps;
-extern const uint_8 bannanaWidthPages;
-extern const uint_8 bannanaHeightPixels;
+extern uint8_t bannanaBitmaps[];
+extern const uint8_t bannanaWidthPages;
+extern const uint8_t bannanaHeightPixels;
 
 
 #endif
