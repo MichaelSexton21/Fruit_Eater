@@ -8,6 +8,8 @@
 #include <task_buzzer.h>
 TaskHandle_t Task_Buzzer_Handle;
 
+bool song_played = false;
+
 //Note_t Song[] =
 //{
 //
@@ -283,10 +285,15 @@ void Task_Buzzer(void)
     while(1){
         // Cycle through each note in the array
         int i;
-        for(i = 0; i < 3; i++)
+        if(song_played == false)
         {
-            buzzer_play_note(i);
+            for(i = 0; i < 3; i++)
+                {
+                    buzzer_play_note(i);
+                }
+            song_played = true;
         }
+
 
         // Turn the Buzzer off once playing
         Buzzer_Off();
