@@ -8,50 +8,99 @@
 #include <task_buzzer.h>
 TaskHandle_t Task_Buzzer_Handle;
 
+//Note_t Song[] =
+//{
+//
+//    {NOTE_C5,ONE_QUARTER,true},  // Tone, Time, Delay
+//    {NOTE_F5,ONE_QUARTER,true},
+//    {NOTE_C5,ONE_QUARTER,true},
+//    {NOTE_A4,ONE_QUARTER,true},
+//
+//    {NOTE_C5,ONE_QUARTER,true},
+//    {NOTE_F5,ONE_QUARTER,true},
+//    {NOTE_C5,ONE_HALF,true},
+//
+//    {NOTE_C5,ONE_QUARTER,true},
+//    {NOTE_F5,ONE_QUARTER,true},
+//    {NOTE_C5,ONE_QUARTER,true},
+//    {NOTE_F5,ONE_QUARTER,true},
+//
+//    {NOTE_A5,ONE_QUARTER,true},
+//    {NOTE_G5,ONE_QUARTER,true},
+//    {NOTE_F5,ONE_EIGTH,true},
+//    {NOTE_E5,ONE_EIGTH,true},
+//    {NOTE_D5,ONE_EIGTH,true},
+//    {NOTE_C5S,ONE_EIGTH,true},
+//
+//    {NOTE_C5,ONE_QUARTER,true},
+//    {NOTE_F5,ONE_QUARTER,true},
+//    {NOTE_C5,ONE_QUARTER,true},
+//    {NOTE_A4,ONE_QUARTER,true},
+//
+//    {NOTE_C5,ONE_QUARTER,true},
+//    {NOTE_F5,ONE_QUARTER,true},
+//    {NOTE_C5,ONE_HALF,true},
+//
+//    {NOTE_F5,ONE_QUARTER,true},
+//    {NOTE_D5,ONE_EIGTH,true},
+//    {NOTE_C5,ONE_QUARTER,true},
+//    {NOTE_A4S,ONE_QUARTER,true},
+//
+//    {NOTE_A4,ONE_QUARTER,true},
+//    {NOTE_G4,ONE_QUARTER,true},
+//    {NOTE_F4,ONE_HALF,false}
+//
+//};
+
+//Note_t Song[] =
+//{
+//
+//    {NOTE_E5,ONE_QUARTER,true},  // Tone, Time, Delay
+//    {NOTE_C5,ONE_EIGTH,true},
+//    {NOTE_D5,ONE_EIGTH,true},
+//    {NOTE_G5,ONE_EIGTH,true},
+//
+//    {NOTE_E5,ONE_EIGTH,true}, //
+//    {NOTE_C5,ONE_EIGTH,true},
+//    {NOTE_D5,ONE_EIGTH,true},
+//    {NOTE_G5,ONE_EIGTH,true},
+//
+//    {NOTE_E5,ONE_EIGTH,true},
+//    {NOTE_C5,ONE_EIGTH,true},
+//    {NOTE_D5,ONE_EIGTH,true},
+//    {NOTE_G5,ONE_EIGTH,true},
+//
+//    {NOTE_E5,ONE_QUARTER,true},
+//    {NOTE_G5,ONE_QUARTER,true},
+//    {NOTE_A5,ONE_EIGTH,true},
+//    {NOTE_C6,ONE_EIGTH,true},
+//
+//    {NOTE_A6S,ONE_EIGTH,true},
+//    {NOTE_G5S,ONE_EIGTH,true},
+//    {NOTE_G5,ONE_EIGTH,true},
+//    {NOTE_F5,ONE_EIGTH,true},
+//
+//    {NOTE_D5S,ONE_EIGTH,true},
+//    {NOTE_D5,ONE_EIGTH,true},
+//    {NOTE_C5,ONE_EIGTH,true},
+//    {NOTE_A6S,ONE_QUARTER,true},
+//
+//    {NOTE_A6S,ONE_QUARTER,true},
+//    {NOTE_A6,ONE_EIGTH,true},
+//    {NOTE_G5,ONE_EIGTH,true},
+//    {NOTE_E5,ONE_EIGTH,true},
+//
+//    {NOTE_A6,ONE_EIGTH,true},
+//    {NOTE_G5,ONE_EIGTH,true},
+//    {NOTE_E5,ONE_EIGTH,false}
+//
+//
+//};
+
 Note_t Song[] =
 {
-
-    {NOTE_C5,ONE_QUARTER,true},  // Tone, Time, Delay
-    {NOTE_F5,ONE_QUARTER,true},
-    {NOTE_C5,ONE_QUARTER,true},
-    {NOTE_A4,ONE_QUARTER,true},
-
-    {NOTE_C5,ONE_QUARTER,true},
-    {NOTE_F5,ONE_QUARTER,true},
-    {NOTE_C5,ONE_HALF,true},
-
-    {NOTE_C5,ONE_QUARTER,true},
-    {NOTE_F5,ONE_QUARTER,true},
-    {NOTE_C5,ONE_QUARTER,true},
-    {NOTE_F5,ONE_QUARTER,true},
-
-    {NOTE_A5,ONE_QUARTER,true},
-    {NOTE_G5,ONE_QUARTER,true},
-    {NOTE_F5,ONE_EIGTH,true},
-    {NOTE_E5,ONE_EIGTH,true},
-    {NOTE_D5,ONE_EIGTH,true},
-    {NOTE_C5S,ONE_EIGTH,true},
-
-    {NOTE_C5,ONE_QUARTER,true},
-    {NOTE_F5,ONE_QUARTER,true},
-    {NOTE_C5,ONE_QUARTER,true},
-    {NOTE_A4,ONE_QUARTER,true},
-
-    {NOTE_C5,ONE_QUARTER,true},
-    {NOTE_F5,ONE_QUARTER,true},
-    {NOTE_C5,ONE_HALF,true},
-
-    {NOTE_F5,ONE_QUARTER,true},
-    {NOTE_D5,ONE_EIGTH,true},
-    {NOTE_C5,ONE_QUARTER,true},
-    {NOTE_A4S,ONE_QUARTER,true},
-
-    {NOTE_A4,ONE_QUARTER,true},
-    {NOTE_G4,ONE_QUARTER,true},
-    {NOTE_F4,ONE_HALF,false}
-
+ {NOTE_C5,ONE_EIGTH,true},{NOTE_A5,ONE_EIGTH,true}, {NOTE_G5,ONE_EIGTH,false},
 };
-
 
 //***************************************************************
 // This function returns how long an individual  notes is played
@@ -234,9 +283,9 @@ void Task_Buzzer(void)
     while(1){
         // Cycle through each note in the array
         int i;
-        for(i = 0; i < SONG_NUM_NOTES; i++)
+        for(i = 0; i < 3; i++)
         {
-            //buzzer_play_note(i);
+            buzzer_play_note(i);
         }
 
         // Turn the Buzzer off once playing
