@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
+#include <grlib.h>
+Graphics_Context g_sContext;
 
 #define PACKMAN_QUEUE_LEN  2
 
@@ -57,14 +59,17 @@ void Draw_Packman(void){
 
 
 void Update_Random_Fruit_Coordinates(){
-    uint8_t t;
 
    // Intializes random number generator
    //srand((unsigned) time(&t));
+    uint32_t distance = sqrt((pow(fruit_x-x,2)+pow(fruit_y-y,2)));
 
+    //while(distance<25){
 
-   fruit_x = (rand() % (117 - 15 + 1)) + 15;  //rand() % 133;
-   fruit_y = (rand() % (117 - 15 + 1)) + 15;
+       fruit_x = (rand() % (117 - 15 + 1)) + 15;  //rand() % 133;
+       fruit_y = (rand() % (117 - 15 + 1)) + 15;
+       distance = sqrt((pow(fruit_x-x,2)+pow(fruit_y-y,2)));
+    //}
 }
 
 void Draw_Fruit(void){
@@ -207,6 +212,12 @@ void Task_Packman(void *pvParameters)
             sprintf(X, "%zu", score);
             printf(X);
         }
+//        Graphics_drawStringCentered(&g_sContext,
+//        (int8_t *)"Hello",
+//        AUTO_STRING_LENGTH,
+//        64,
+//        30,
+//        OPAQUE_TEXT);
 
         dir = 4;
         Draw_Packman();

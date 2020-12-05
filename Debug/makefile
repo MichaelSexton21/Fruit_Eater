@@ -4,17 +4,20 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS
+CG_TOOL_ROOT := C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
 
 ORDERED_OBJS += \
+"./display.obj" \
 "./i2c.obj" \
 "./lcd.obj" \
+"./line.obj" \
 "./main.obj" \
 "./packman.obj" \
 "./startup_msp432p401r_ccs.obj" \
+"./string.obj" \
 "./system_msp432p401r.obj" \
 "./task_accelerometer.obj" \
 "./task_buzzer.obj" \
@@ -164,22 +167,22 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 Project.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=all --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Project.map" --heap_size=1024 --stack_size=512 -i"C:/ti/ccs1010/ccs/ccs_base/arm/include" -i"C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/lib" -i"C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Project_linkInfo.xml" --rom_model -o "Project.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --advice:power=all --define=__MSP432P401R__ --define=ccs -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Project.map" --heap_size=1024 --stack_size=512 -i"C:/ti/ccs1010/ccs/ccs_base/arm/include" -i"C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/lib" -i"C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Project_linkInfo.xml" --rom_model -o "Project.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 Project.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: ARM Hex Utility'
-	"C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/bin/armhex" --memwidth=8 --romwidth=8 -o "Project.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/bin/armhex" --memwidth=8 --romwidth=8 -o "Project.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "i2c.obj" "lcd.obj" "main.obj" "packman.obj" "startup_msp432p401r_ccs.obj" "system_msp432p401r.obj" "task_accelerometer.obj" "task_buzzer.obj" "task_console.obj" "task_light_sensor.obj" "task_packman.obj" "FreeRTOS\croutine.obj" "FreeRTOS\event_groups.obj" "FreeRTOS\heap_4.obj" "FreeRTOS\list.obj" "FreeRTOS\queue.obj" "FreeRTOS\stream_buffer.obj" "FreeRTOS\tasks.obj" "FreeRTOS\timers.obj" "FreeRTOS\portable\port.obj" "FreeRTOS\portable\portasm.obj" 
-	-$(RM) "i2c.d" "lcd.d" "main.d" "packman.d" "startup_msp432p401r_ccs.d" "system_msp432p401r.d" "task_accelerometer.d" "task_buzzer.d" "task_console.d" "task_light_sensor.d" "task_packman.d" "FreeRTOS\croutine.d" "FreeRTOS\event_groups.d" "FreeRTOS\heap_4.d" "FreeRTOS\list.d" "FreeRTOS\queue.d" "FreeRTOS\stream_buffer.d" "FreeRTOS\tasks.d" "FreeRTOS\timers.d" "FreeRTOS\portable\port.d" 
+	-$(RM) "display.obj" "i2c.obj" "lcd.obj" "line.obj" "main.obj" "packman.obj" "startup_msp432p401r_ccs.obj" "string.obj" "system_msp432p401r.obj" "task_accelerometer.obj" "task_buzzer.obj" "task_console.obj" "task_light_sensor.obj" "task_packman.obj" "FreeRTOS\croutine.obj" "FreeRTOS\event_groups.obj" "FreeRTOS\heap_4.obj" "FreeRTOS\list.obj" "FreeRTOS\queue.obj" "FreeRTOS\stream_buffer.obj" "FreeRTOS\tasks.obj" "FreeRTOS\timers.obj" "FreeRTOS\portable\port.obj" "FreeRTOS\portable\portasm.obj" 
+	-$(RM) "display.d" "i2c.d" "lcd.d" "line.d" "main.d" "packman.d" "startup_msp432p401r_ccs.d" "string.d" "system_msp432p401r.d" "task_accelerometer.d" "task_buzzer.d" "task_console.d" "task_light_sensor.d" "task_packman.d" "FreeRTOS\croutine.d" "FreeRTOS\event_groups.d" "FreeRTOS\heap_4.d" "FreeRTOS\list.d" "FreeRTOS\queue.d" "FreeRTOS\stream_buffer.d" "FreeRTOS\tasks.d" "FreeRTOS\timers.d" "FreeRTOS\portable\port.d" 
 	-$(RM) "FreeRTOS\portable\portasm.d" 
 	-@echo 'Finished clean'
 	-@echo ' '

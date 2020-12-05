@@ -139,31 +139,48 @@ void Task_Light_Sensor(void *pvParameters)
 //                Packman_Color = color;
 //            }
 
+            PACKMAN_MSG_t direction;
             if(lux<100){
                 Packman_Color = LCD_COLOR_WHITE;
+                direction.value = 25;
             }else if(lux>100 && lux <200){
                 Packman_Color = LCD_COLOR_MAGENTA;
+                direction.value = 22.22;
             }else if(lux>200 && lux <300){
                 Packman_Color = LCD_COLOR_BLUE2;
+                direction.value = 19.44;
             }else if(lux>300 && lux <400){
                 Packman_Color = LCD_COLOR_BLUE2;
+                direction.value = 16.66;
             }else if(lux>400 && lux <500){
                 Packman_Color = LCD_COLOR_GREEN2;
+                direction.value = 13.88;
             }else if(lux>500 && lux <800){
                 Packman_Color = LCD_COLOR_GREEN;
+                direction.value = 11.11;
             }else if(lux>800 && lux <1000){
                 Packman_Color = LCD_COLOR_RED;
+                direction.value = 8.33;
             }else if(lux>1000 && lux <1300){
                 Packman_Color = LCD_COLOR_ORANGE ;
+                direction.value = 5.55;
             }else if(lux>1300 && lux <1700){
                 Packman_Color = LCD_COLOR_CYAN;
+                direction.value = 2.77;
             }else if(lux>1700){
                 Packman_Color = LCD_COLOR_YELLOW;
+                direction.value = 0;
             }
 
             Draw_Fruit();
             Draw_Packman();
             previous_lux = lux;
+
+
+            direction.cmd = PACKMAN_CMD_SPEED;
+            // https://stackoverflow.com/questions/5294955/how-to-scale-down-a-range-of-numbers-with-a-known-min-and-max-value
+            // direction.value = (20000-lux)/72;
+            xQueueSend(Queue_Packman, &direction, portMAX_DELAY);
 
         }
 }
