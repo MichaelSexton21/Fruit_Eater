@@ -112,7 +112,7 @@ void Task_Light_Sensor(void *pvParameters)
             vTaskDelay(pdMS_TO_TICKS(250));
 
             xSemaphoreTake(Sem_Console, portMAX_DELAY);
-            printf("Task_Light_Sensor\n\r");
+            //printf("Task_Light_Sensor\n\r");
             xSemaphoreGive(Sem_Console);
 //            print_device_id();
 //            print_manufacturer_id();

@@ -50,6 +50,9 @@ task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include
 task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/time.h
 task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/abi_prefix.h
 task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/xlocale/_time.h
+task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/math.h
+task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/_defs.h
+task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/machine/_limits.h
 
 ../task_packman.c: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/main.h: 
@@ -101,3 +104,6 @@ C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/stdlib.h:
 C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/time.h: 
 C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/abi_prefix.h: 
 C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/xlocale/_time.h: 
+C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/math.h: 
+C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/_defs.h: 
+C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.3.LTS/include/machine/_limits.h: 

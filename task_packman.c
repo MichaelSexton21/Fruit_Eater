@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <time.h>
+#include <math.h>
 
 #define PACKMAN_QUEUE_LEN  2
 
@@ -85,17 +86,54 @@ void Draw_Fruit(void){
                 LCD_COLOR_BLACK
         );
 }
+
+void Draw_Black_Screen(){
+    lcd_draw_image(
+                    fruit_x,
+                    fruit_y,
+                    blankWidthPixels,
+                    blankHeightPixels,
+                    blankScreenBitmaps,
+                    LCD_COLOR_BLACK,
+                    LCD_COLOR_BLACK
+            );
+}
+
+bool Collision_Check(){
+
+    char X[20];
+    uint32_t distance = sqrt((pow(fruit_x-x,2)+pow(fruit_y-y,2)));
+
+    if(distance<17)
+        return true;
+    else
+        return false;
+
+    sprintf(X, "%zu", distance);
+    printf("\n\r");
+    printf(X);
+
+//    if(fruit_x-8 < x && fruit_x+8 > x)
+//        return true;
+//    else if(fruit_y-8 < x && fruit_y > y)
+//        return true;
+//    else
+}
+
 /******************************************************************************
  * This task manages the movement of the space ship. The joystick task or the
  * console task can send messages to SHIP_QUEUE_LEN
  ******************************************************************************/
 void Task_Packman(void *pvParameters)
 {
+
+    printf("Task_Packman");
     srand(time(0));
     uint8_t dir = 0; // Which way to point packman
     PACKMAN_MSG_t direction;
     int speed = 25; // Delay between movements
     int pixelsToMove; // Number of pixels packman needs to move
+    uint8_t song= 0;
 
     // Draw the initial starting image of packman.
     Draw_Packman();
@@ -156,12 +194,18 @@ void Task_Packman(void *pvParameters)
         }
 
         if(Collision_Check()){
+            song = 0;
+            xQueueSend(Queue_Music, &song, portMAX_DELAY);
+            Draw_Black_Screen();
             score++;
             Update_Random_Fruit_Coordinates();
             Draw_Fruit();
             current_fruit++;
-            printf("Score: ");
-            printf(score);
+            printf("\n\r");
+            printf("Score: \n\r");
+            char X[20];
+            sprintf(X, "%zu", score);
+            printf(X);
         }
 
         dir = 4;

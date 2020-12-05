@@ -145,6 +145,8 @@
 #define SONG_NUM_NOTES 31
 
 extern TaskHandle_t Task_Buzzer_Handle;
+extern QueueHandle_t Queue_Music;
+//extern uint8_t MUSIC_QUEUE_LEN = 2;
 
 typedef enum measure_time_t {
     ONE_QUARTER,

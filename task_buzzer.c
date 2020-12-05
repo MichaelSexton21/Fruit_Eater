@@ -7,8 +7,9 @@
 
 #include <task_buzzer.h>
 TaskHandle_t Task_Buzzer_Handle;
+QueueHandle_t Queue_Music;
+Note_t* curr_music;
 
-bool song_played = true;
 
 //Note_t Song[] =
 //{
@@ -99,10 +100,11 @@ Note_t Song[] =
 
 };
 
-//Note_t Song[] =
-//{
-// {NOTE_C5,ONE_EIGTH,true},{NOTE_A5,ONE_EIGTH,true}, {NOTE_G5,ONE_EIGTH,false},
-//};
+Note_t Eat[] =
+{
+ {NOTE_C5,ONE_EIGTH,true},{NOTE_A5,ONE_EIGTH,true}, {NOTE_G5,ONE_EIGTH,false}
+};
+
 
 //***************************************************************
 // This function returns how long an individual  notes is played
@@ -224,12 +226,12 @@ void T32_1_wait(uint32_t ticks)
 static void buzzer_play_note(uint16_t note_index)
 {
     // Set the Buzzer period
-    Buzzer_Set_Period(Song[note_index].period);
+    Buzzer_Set_Period(curr_music[note_index].period);
     // Wait for length of note
-    T32_1_wait(buzzer_get_time_delay(Song[note_index].time));
+    T32_1_wait(buzzer_get_time_delay(curr_music[note_index].time));
 
     // If the note needs a delay wait
-    if(Song[note_index].delay)
+    if(curr_music[note_index].delay)
     {
         T32_1_wait(DELAY_AMOUNT);
     }
@@ -250,6 +252,8 @@ void Task_Buzzer_Init(void)
 
     // Turn off TA0
     TIMER_A0->CTL =0;
+
+    Queue_Music = xQueueCreate(2,sizeof(uint8_t));
 }
 
 
@@ -281,18 +285,30 @@ bool Buzzer_Run_Status(void){
 //***************************************************************
 void Task_Buzzer(void)
 {
+    uint8_t song = 0;
+
+    uint8_t length;
+
 
     while(1){
+        xQueueReceive(Queue_Music, &song, portMAX_DELAY);
+
+        printf("\n\r");
+        printf("SONG: \n\r");
+        char X[20];
+        sprintf(X, "%zu", song);
+        printf(X);
+        if(song==0){
+            curr_music = Eat;
+            length = 3;
+        }
         // Cycle through each note in the array
         int i;
-        if(song_played == false)
-        {
-            for(i = 0; i < 31; i++)
-                {
-                    buzzer_play_note(i);
-                }
-            song_played = true;
-        }
+        for(i = 0; i < length; i++)
+            {
+                buzzer_play_note(i);
+            }
+
 
         // Turn the Buzzer off once playing
         Buzzer_Off();
