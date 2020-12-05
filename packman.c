@@ -121,8 +121,11 @@ uint8_t orangeBitmaps[] =
 };
 
 // Bitmap sizes for orange
-const uint8_t orangeWidthPages = 2;
-const uint8_t orangeHeightPixels = 13;
+//const uint8_t orangeWidthPages = 15;
+//const uint8_t orangeHeightPixels = 15;
+
+const uint8_t fruitWidthPixels = 15;
+const uint8_t fruitHeightPixels = 15;
 
 
 
@@ -148,8 +151,8 @@ uint8_t appleBitmaps[] =
 };
 
 // Bitmap sizes for apple
-const uint8_t appleWidthPages = 2;
-const uint8_t appleHeightPixels = 13;
+//const uint8_t appleWidthPages = 15;
+//const uint8_t appleHeightPixels = 15;
 
 
 
@@ -174,7 +177,7 @@ uint8_t bannanaBitmaps[] =
 };
 
 // Bitmap sizes for bannana
-const uint8_t bannanaWidthPages = 2;
-const uint8_t bannanaHeightPixels = 12;
+//const uint8_t bannanaWidthPages = 15;
+//const uint8_t bannanaHeightPixels = 15;
 
 

@@ -99,8 +99,8 @@ void Task_Accelerometer(void *pvParameters)
             sprintf(X, "%zu", ACC_X_DIR); // "%f" for float //"%zu" for int
             xSemaphoreTake(Sem_Console, portMAX_DELAY);
             //printf("X:\n\r");
-            printf(X);
-            printf("\n\r");
+            //printf(X);
+            //printf("\n\r");
 
 
             /*
@@ -108,16 +108,16 @@ void Task_Accelerometer(void *pvParameters)
              * on the values of JOYSTICK_X_DIR and JOYSTIC_Y_DIR
              */
             if(ACC_X_DIR < 2000){
-                printf("Left");
+                //printf("Left");
                direction.cmd = PACKMAN_CMD_LEFT;
             }else if(ACC_X_DIR > 2150){
-                printf("Right");
+                //printf("Right");
                 direction.cmd = PACKMAN_CMD_RIGHT;
             }else if(ACC_Y_DIR < 2020){
-                printf("DOWN");
+                //printf("DOWN");
                 direction.cmd = PACKMAN_CMD_DOWN;
             }else if(ACC_Y_DIR > 2100){
-                printf("UP");
+                //printf("UP");
                 direction.cmd = PACKMAN_CMD_UP;
             }else{
                 direction.cmd = PACKMAN_CMD_CENTER;

@@ -161,7 +161,7 @@ void Task_Light_Sensor(void *pvParameters)
                 Packman_Color = LCD_COLOR_YELLOW;
             }
 
-
+            Draw_Fruit();
             Draw_Packman();
             previous_lux = lux;
 

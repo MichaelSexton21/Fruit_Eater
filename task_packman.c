@@ -7,6 +7,9 @@
  */
 
 #include <main.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
 
 #define PACKMAN_QUEUE_LEN  2
 
@@ -14,7 +17,12 @@ TaskHandle_t Task_Packman_Handle;
 QueueHandle_t Queue_Packman;
 uint8_t x = 64;
 uint8_t y = 64;
+volatile uint8_t fruit_x;
+volatile uint8_t fruit_y;
 uint8_t* current_packman_Bitmap = packman_rightBitmaps;
+uint8_t* current_fruit_Bitmap = orangeBitmaps;
+uint8_t current_fruit = 0;
+uint8_t score = 0;
 
 
 /******************************************************************************
@@ -44,20 +52,56 @@ void Draw_Packman(void){
                 LCD_COLOR_BLACK
         );
 }
+
+
+
+void Update_Random_Fruit_Coordinates(){
+    uint8_t t;
+
+   // Intializes random number generator
+   //srand((unsigned) time(&t));
+
+
+   fruit_x = (rand() % (117 - 15 + 1)) + 15;  //rand() % 133;
+   fruit_y = (rand() % (117 - 15 + 1)) + 15;
+}
+
+void Draw_Fruit(void){
+    if(current_fruit == 0){
+        current_fruit_Bitmap = orangeBitmaps;
+    }else if(current_fruit == 1){
+        current_fruit_Bitmap = bannanaBitmaps;
+    }else if(current_fruit ==2){
+        current_fruit_Bitmap = appleBitmaps;
+        current_fruit=0;
+    }
+    lcd_draw_image(
+                fruit_x,
+                fruit_y,
+                fruitWidthPixels,
+                fruitHeightPixels,
+                current_fruit_Bitmap,
+                Packman_Color,
+                LCD_COLOR_BLACK
+        );
+}
 /******************************************************************************
  * This task manages the movement of the space ship. The joystick task or the
  * console task can send messages to SHIP_QUEUE_LEN
  ******************************************************************************/
 void Task_Packman(void *pvParameters)
 {
-
+    srand(time(0));
     uint8_t dir = 0; // Which way to point packman
     PACKMAN_MSG_t direction;
     int speed = 25; // Delay between movements
-    int pixelsToMove; // Number of pixels the spaceship needs to be moved
+    int pixelsToMove; // Number of pixels packman needs to move
 
-    // Draw the initial starting image of the spaceship.
+    // Draw the initial starting image of packman.
     Draw_Packman();
+    Update_Random_Fruit_Coordinates();
+    Draw_Fruit();
+    current_fruit++;
 
     // So the task never exits
     while(1)
@@ -79,7 +123,7 @@ void Task_Packman(void *pvParameters)
         while(pixelsToMove > 0){
             pixelsToMove--; // decrement the loop control variable
 
-        // Move the picture by one pixel with each loop and don't exceede the bounds of the screen
+        // Move the picture by one pixel with each loop and don't exceed the bounds of the screen
         if(direction.cmd == PACKMAN_CMD_LEFT  && x > 12){
             dir = 0;
             x--;
@@ -100,7 +144,7 @@ void Task_Packman(void *pvParameters)
             pixelsToMove = 0;
             dir = 1;
         }
-        // draw the space ship
+        // draw the packman
         if(dir==0){
             current_packman_Bitmap = packman_leftBitmaps;
         }else if(dir==1){
@@ -110,8 +154,19 @@ void Task_Packman(void *pvParameters)
         }else if(dir==3){
             current_packman_Bitmap = packman_downBitmaps;
         }
+
+        if(Collision_Check()){
+            score++;
+            Update_Random_Fruit_Coordinates();
+            Draw_Fruit();
+            current_fruit++;
+            printf("Score: ");
+            printf(score);
+        }
+
         dir = 4;
         Draw_Packman();
+
         // delay for speed ms
         vTaskDelay(pdMS_TO_TICKS(speed));
         }
