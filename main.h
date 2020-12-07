@@ -29,6 +29,8 @@
 #include <task_packman.h>
 #include <task_light_sensor.h>
 #include <task_buzzer.h>
+#include <text.h>
+#include <task_screen.h>
 
 
 

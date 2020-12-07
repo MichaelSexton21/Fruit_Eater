@@ -46,6 +46,8 @@ task_light_sensor.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisco
 task_light_sensor.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_light_sensor.h
 task_light_sensor.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/i2c.h
 task_light_sensor.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_buzzer.h
+task_light_sensor.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/text.h
+task_light_sensor.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_screen.h
 
 ../task_light_sensor.c: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/main.h: 
@@ -93,3 +95,5 @@ C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_light_sensor.h: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/i2c.h: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_buzzer.h: 
+C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/text.h: 
+C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_screen.h: 

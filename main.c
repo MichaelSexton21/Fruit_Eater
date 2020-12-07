@@ -115,6 +115,15 @@ int main(void)
          &Task_Buzzer_Handle
      );
 
+    xTaskCreate
+     (   Task_Screen,
+         "Task_Screen",
+         configMINIMAL_STACK_SIZE,
+         NULL,
+         4,
+         &Task_Screen_Handle
+     );
+
     /* Start the FreeRTOS scheduler */
     vTaskStartScheduler();
 

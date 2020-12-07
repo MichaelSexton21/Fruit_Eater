@@ -11,8 +11,6 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
-#include <grlib.h>
-Graphics_Context g_sContext;
 
 #define PACKMAN_QUEUE_LEN  2
 
@@ -94,8 +92,8 @@ void Draw_Fruit(void){
 
 void Draw_Black_Screen(){
     lcd_draw_image(
-                    fruit_x,
-                    fruit_y,
+                    0,
+                    0,
                     blankWidthPixels,
                     blankHeightPixels,
                     blankScreenBitmaps,
@@ -118,12 +116,8 @@ bool Collision_Check(){
     printf("\n\r");
     printf(X);
 
-//    if(fruit_x-8 < x && fruit_x+8 > x)
-//        return true;
-//    else if(fruit_y-8 < x && fruit_y > y)
-//        return true;
-//    else
 }
+
 
 /******************************************************************************
  * This task manages the movement of the space ship. The joystick task or the
@@ -138,13 +132,15 @@ void Task_Packman(void *pvParameters)
     PACKMAN_MSG_t direction;
     int speed = 25; // Delay between movements
     int pixelsToMove; // Number of pixels packman needs to move
-    uint8_t song= 0;
+    uint8_t song = 0;
+
 
     // Draw the initial starting image of packman.
     Draw_Packman();
     Update_Random_Fruit_Coordinates();
     Draw_Fruit();
     current_fruit++;
+
 
     // So the task never exits
     while(1)

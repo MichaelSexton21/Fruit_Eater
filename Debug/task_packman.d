@@ -46,6 +46,8 @@ task_packman.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-
 task_packman.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_light_sensor.h
 task_packman.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/i2c.h
 task_packman.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_buzzer.h
+task_packman.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/text.h
+task_packman.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_screen.h
 task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/stdlib.h
 task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/time.h
 task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/abi_prefix.h
@@ -53,8 +55,6 @@ task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include
 task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/math.h
 task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/_defs.h
 task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/machine/_limits.h
-task_packman.obj: C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/grlib.h
-task_packman.obj: C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/assert.h
 
 ../task_packman.c: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/main.h: 
@@ -102,6 +102,8 @@ C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_light_sensor.h: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/i2c.h: 
 C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_buzzer.h: 
+C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/text.h: 
+C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/task_screen.h: 
 C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/stdlib.h: 
 C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/time.h: 
 C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/abi_prefix.h: 
@@ -109,5 +111,3 @@ C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/xlocale/_time.h:
 C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/math.h: 
 C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/_defs.h: 
 C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/machine/_limits.h: 
-C:/Users/mjs47/OneDrive/School/The\ University\ of\ Wisconsin-Madison/3\ Junior\ Year/1\ Fall\ Semester/ECE\ 353/code-FreeRTOS/Project/grlib.h: 
-C:/ti/ccs1010/ccs/tools/compiler/ti-cgt-arm_20.2.2.LTS/include/assert.h: 

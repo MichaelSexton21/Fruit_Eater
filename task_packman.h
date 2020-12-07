@@ -41,5 +41,6 @@ void Task_Packman(void *pvParameters);
 
 void Draw_Packman(void);
 void Draw_Fruit(void);
+void Draw_Black_Screen(void);
 
 #endif /* TASK_PACKMAN_H_ */
