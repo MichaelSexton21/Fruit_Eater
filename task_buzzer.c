@@ -55,7 +55,7 @@ Note_t Jeopardy[] =
 
 };
 
-Note_t Song[] =
+Note_t end_Song[] =
 {
 
     {NOTE_E5,ONE_QUARTER,true},  // Tone, Time, Delay
@@ -297,7 +297,8 @@ void Task_Buzzer(void)
             curr_music = Eat;
             length = 3;
         }else if(song==1){
-            curr_music = Jeopardy;
+            curr_music = end_Song;
+            length = 31;
         }
         // Cycle through each note in the array
         int i;

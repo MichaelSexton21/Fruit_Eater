@@ -117,6 +117,8 @@ void Print_Numbers(char X){
 
 void End_Screen(){
 
+    uint8_t song = 1;
+
     char_x = 20;
     char_y = 40;
 
@@ -191,6 +193,8 @@ for(i=0;i<x;i++){
         printf("not null");
         Print_Words((uint16_t*)(STR_SCORE[1]-'0'), 1);
     }
+
+    xQueueSend(Queue_Music, &song, portMAX_DELAY);
 
 
     xSemaphoreGive(Sem_Console);
