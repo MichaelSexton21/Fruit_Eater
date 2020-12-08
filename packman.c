@@ -1,6 +1,13 @@
+/*
+ * packman.c
+ *
+ *  Created on: Nov 25, 2020
+ *  Authors: Michael Sexton and John Bybel
+ *
+ */
 #include <packman.h>
 
-
+//packman up facing bitmap from dot factory
 uint8_t packman_upBitmaps[] =
 {
 	0x00, 0x00, 0x00,
@@ -28,7 +35,7 @@ uint8_t packman_upBitmaps[] =
 // Bitmap sizes for packman
 const uint8_t packman_WidthPixels = 24;
 const uint8_t packman_HeightPixels = 20;
-
+//packman downfacing bitmap
 uint8_t packman_downBitmaps[] =
 	{
 		0x00, 0x00, 0x00,
@@ -52,7 +59,7 @@ uint8_t packman_downBitmaps[] =
 		0x00, 0x18, 0x00, //            ##
 		0x00, 0x00, 0x00
 	};
-
+//packman facting left bitmaps
 uint8_t packman_leftBitmaps[] =
 {
       0x00, 0x00, 0x00, //
@@ -76,7 +83,7 @@ uint8_t packman_leftBitmaps[] =
 	0x03, 0xF8, 0x00, //       #######    
       0x00, 0x00, 0x00  //
 };
-
+//packman facing right bitmap
 uint8_t packman_rightBitmaps[] =
 {
        0x00, 0x00, 0x00, //
@@ -102,7 +109,7 @@ uint8_t packman_rightBitmaps[] =
 
 };
 
-
+//bitmap for orange fruits
 uint8_t orangeBitmaps[] =
 {
     0x38, 0x00, //   ###
@@ -134,7 +141,7 @@ const uint8_t fruitHeightPixels = 15;
 // 
 //  Image data for apple
 // 
-
+//bitmap for apple
 uint8_t appleBitmaps[] =
 {
     0x13, 0x00, //    #  ##
@@ -163,7 +170,7 @@ uint8_t appleBitmaps[] =
 // 
 //  Image data for bannana
 // 
-
+//bitmap for bannana
 uint8_t bannanaBitmaps[] =
 {
     0x0C, 0x00, //     ##
@@ -186,6 +193,8 @@ uint8_t bannanaBitmaps[] =
 // Bitmap sizes for bannana
 //const uint8_t bannanaWidthPages = 15;
 //const uint8_t bannanaHeightPixels = 15;
+
+//bitmap for drawing a black screen
 
 const uint8_t blankScreenBitmaps[] = {
         0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xF0, // ####################################################################################################################################

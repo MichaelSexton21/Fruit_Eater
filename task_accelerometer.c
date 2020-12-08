@@ -11,7 +11,7 @@
 
  TaskHandle_t Task_Accelerometer_Handle;
  TaskHandle_t Task_Accelerometer_Timer_Handle;
-
+//global variables for the accelerameter directions
  volatile uint32_t ACC_X_DIR = 0;
  volatile uint32_t ACC_Y_DIR = 0;
  volatile uint32_t ACC_Z_DIR = 0;
@@ -147,7 +147,7 @@ void ADC14_IRQHandler(void)
 
     ACC_X_DIR = ADC14->MEM[0]; // Read the value and clear the interrupt
     ACC_Y_DIR = ADC14->MEM[1];
-    ACC_Z_DIR = ADC14->MEM[2];
+    ACC_Z_DIR = ADC14->MEM[2]; //assign values to their x y and z directions
 
 
     /*

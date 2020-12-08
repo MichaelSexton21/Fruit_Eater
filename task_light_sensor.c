@@ -1,5 +1,5 @@
 /*
- * task_accelerometer.c
+ * task_light_sensor.c
  *
  *  Created on: Nov 25, 2020
  *  Authors: Michael Sexton and John Bybel
