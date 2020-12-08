@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <math.h>
+#include <task_screen.h>
 
 #define PACKMAN_QUEUE_LEN  2
 
@@ -23,7 +24,9 @@ volatile uint8_t fruit_y;
 uint8_t* current_packman_Bitmap = packman_rightBitmaps;
 uint8_t* current_fruit_Bitmap = orangeBitmaps;
 uint8_t current_fruit = 0;
-uint8_t score = 0;
+volatile uint16_t TOTAL_SCORE = 0;
+int total_time = 0;
+
 
 
 /******************************************************************************
@@ -91,9 +94,10 @@ void Draw_Fruit(void){
 }
 
 void Draw_Black_Screen(){
+    printf("blackScreen");
     lcd_draw_image(
-                    0,
-                    0,
+                    64,
+                    64,
                     blankWidthPixels,
                     blankHeightPixels,
                     blankScreenBitmaps,
@@ -198,28 +202,34 @@ void Task_Packman(void *pvParameters)
             song = 0;
             xQueueSend(Queue_Music, &song, portMAX_DELAY);
             Draw_Black_Screen();
-            score++;
+            TOTAL_SCORE++;
             Update_Random_Fruit_Coordinates();
             Draw_Fruit();
             current_fruit++;
             printf("\n\r");
             printf("Score: \n\r");
             char X[20];
-            sprintf(X, "%zu", score);
+            sprintf(X, "%zu", TOTAL_SCORE);
             printf(X);
         }
-//        Graphics_drawStringCentered(&g_sContext,
-//        (int8_t *)"Hello",
-//        AUTO_STRING_LENGTH,
-//        64,
-//        30,
-//        OPAQUE_TEXT);
 
         dir = 4;
         Draw_Packman();
 
+        char TIME[20];
+        sprintf(TIME, "%u", total_time);
+        printf(TIME);
+        printf("\n\r");
+
+        if(total_time>=30000){
+            END=true;
+            vTaskDelay(pdMS_TO_TICKS(1000));
+            vTaskPrioritySet( Task_Screen_Handle, 4);
+        }
+
         // delay for speed ms
         vTaskDelay(pdMS_TO_TICKS(speed));
+        total_time = total_time+ speed;
         }
 
     }

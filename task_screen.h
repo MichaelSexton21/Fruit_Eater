@@ -14,6 +14,9 @@
 
 
 extern TaskHandle_t Task_Screen_Handle;
+extern bool START;
+extern bool END;
+extern volatile uint32_t TIMER;
 
 //***************************************************************
 //***************************************************************

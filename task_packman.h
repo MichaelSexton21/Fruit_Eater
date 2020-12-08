@@ -10,6 +10,7 @@
 #define TASK_PACKMAN_H_
 
 #include <main.h>
+#include <task_screen.h>
 
 typedef enum {
     PACKMAN_CMD_LEFT,
@@ -27,6 +28,7 @@ typedef struct {
 
 extern TaskHandle_t Task_Packman_Handle;
 extern QueueHandle_t Queue_Packman;
+extern volatile uint16_t TOTAL_SCORE;
 
 /******************************************************************************
  * This function will initialize Queue_Packman

@@ -52,6 +52,7 @@ int main(void)
     Task_Packman_Init();
     Task_Accelerometer_Init();
     Task_Buzzer_Init();
+    //Task_Screen_Init();
 
     __enable_irq();
 
