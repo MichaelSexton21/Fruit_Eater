@@ -117,7 +117,9 @@ uint8_t orangeBitmaps[] =
     0xFF, 0xC0, // ##########
     0xFF, 0xC0, // ##########
     0x7F, 0x80, //  ########
-    0x3F, 0x00, //   ######
+    0x3F, 0x00,//   ######
+    0x00, 0x00,
+    0x00, 0x00,
 };
 
 // Bitmap sizes for orange
@@ -148,6 +150,8 @@ uint8_t appleBitmaps[] =
     0x7F, 0xE0, //  ##########
     0x3F, 0xC0, //   ########
     0x1F, 0x80, //    ######
+    0x00, 0x00,
+    0x00, 0x00,
 };
 
 // Bitmap sizes for apple
@@ -175,6 +179,8 @@ uint8_t bannanaBitmaps[] =
     0xFF, 0xF8, // #############
     0x7F, 0xF8, //  ############
     0x7F, 0xE0, //  ##########
+    0x00, 0x00,
+    0x00, 0x00,
 };
 
 // Bitmap sizes for bannana
