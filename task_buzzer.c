@@ -287,7 +287,7 @@ void Task_Buzzer(void)
 {
     uint8_t song = 0; //initially set the noise to be played as eating
 
-    uint8_t length; length of the song to be played
+    uint8_t length; //length of the song to be played
 
 
     while(1){
