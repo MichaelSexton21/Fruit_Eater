@@ -1,7 +1,7 @@
 /*
  * task_buzzer.c
  *
- * Author: Michael Sexton
+ * Author: Michael Sexton and Jack Bybel
  *
  */
 
@@ -10,7 +10,7 @@ TaskHandle_t Task_Buzzer_Handle;
 QueueHandle_t Queue_Music;
 Note_t* curr_music;
 
-
+//notes for jeopardy theme
 Note_t Jeopardy[] =
 {
 
@@ -54,7 +54,7 @@ Note_t Jeopardy[] =
     {NOTE_F4,ONE_HALF,false}
 
 };
-
+//notes for ending song
 Note_t end_Song[] =
 {
 
@@ -99,7 +99,7 @@ Note_t end_Song[] =
 
 
 };
-
+//noise for eating the fruit
 Note_t Eat[] =
 {
  {NOTE_C5,ONE_EIGTH,true},{NOTE_A5,ONE_EIGTH,true}, {NOTE_G5,ONE_EIGTH,false}
@@ -109,7 +109,7 @@ Note_t Eat[] =
 //***************************************************************
 // This function returns how long an individual  notes is played
 //***************************************************************
-uint32_t buzzer_get_time_delay(measure_time_t time)
+uint32_t buzzer_get_time_delay(measure_time_t time) //given to us by class
 {
     uint32_t time_return = 0;
 
@@ -285,16 +285,16 @@ bool Buzzer_Run_Status(void){
 //***************************************************************
 void Task_Buzzer(void)
 {
-    uint8_t song = 0;
+    uint8_t song = 0; //initially set the noise to be played as eating
 
-    uint8_t length;
+    uint8_t length; length of the song to be played
 
 
     while(1){
-        xQueueReceive(Queue_Music, &song, portMAX_DELAY);
+        xQueueReceive(Queue_Music, &song, portMAX_DELAY); //start playing when told and when a new song has entered the queue
 
-        if(song==0){
-            curr_music = Eat;
+        if(song==0){ //check for the eating noise
+            curr_music = Eat; //set the appropriate notes to play and the length of the song
             length = 3;
         }else if(song==1){
             curr_music = end_Song;

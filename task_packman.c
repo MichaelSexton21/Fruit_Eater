@@ -44,7 +44,7 @@ void Task_Packman_Init(void)
     Crystalfontz128x128_Init();
 
 }
-
+//draw packman on the screen
 void Draw_Packman(void){
     lcd_draw_image(
                 x,
@@ -72,14 +72,14 @@ void Update_Random_Fruit_Coordinates(){
        distance = sqrt((pow(fruit_x-x,2)+pow(fruit_y-y,2)));
     //}
 }
-
+//draw the fruit on the screen depending on which fruit was given
 void Draw_Fruit(void){
     if(current_fruit == 0){
-        current_fruit_Bitmap = orangeBitmaps;
+        current_fruit_Bitmap = orangeBitmaps; //draw the orange
     }else if(current_fruit == 1){
-        current_fruit_Bitmap = bannanaBitmaps;
+        current_fruit_Bitmap = bannanaBitmaps; //draw the bannana
     }else if(current_fruit ==2){
-        current_fruit_Bitmap = appleBitmaps;
+        current_fruit_Bitmap = appleBitmaps; // draw the apple
         current_fruit=0;
     }
     lcd_draw_image(
@@ -92,7 +92,7 @@ void Draw_Fruit(void){
                 LCD_COLOR_BLACK
         );
 }
-
+//function for drawing a black screen, used to clear things off the screen
 void Draw_Black_Screen(){
     printf("blackScreen");
     lcd_draw_image(
@@ -105,13 +105,14 @@ void Draw_Black_Screen(){
                     LCD_COLOR_BLACK
             );
 }
-
+//check the distance between packman and the fruit
+//used to determine when fruit should be "eaten"
 bool Collision_Check(){
 
     char X[20];
-    uint32_t distance = sqrt((pow(fruit_x-x,2)+pow(fruit_y-y,2)));
+    uint32_t distance = sqrt((pow(fruit_x-x,2)+pow(fruit_y-y,2))); //distance formula using coordinates of fruit and packman
 
-    if(distance<17)
+    if(distance<17) //if the distance is less than 17 then eat the fruit, if not don't
         return true;
     else
         return false;
@@ -162,7 +163,7 @@ void Task_Packman(void *pvParameters)
             pixelsToMove = direction.value;
         }
 
-        // While there are still pixels to move, update the spaceship
+        // While there are still pixels to move, update packman
         while(pixelsToMove > 0){
             pixelsToMove--; // decrement the loop control variable
 
@@ -197,16 +198,16 @@ void Task_Packman(void *pvParameters)
         }else if(dir==3){
             current_packman_Bitmap = packman_downBitmaps;
         }
-
+        //check for collision
         if(Collision_Check()){
-            song = 0;
+            song = 0; //fruit has been eaten so send the fruit eating sound to the music queue
             xQueueSend(Queue_Music, &song, portMAX_DELAY);
-            Draw_Black_Screen();
-            TOTAL_SCORE++;
-            Update_Random_Fruit_Coordinates();
-            Draw_Fruit();
+            Draw_Black_Screen(); //draw black screen to clear the fruit from the screen (packman will be redrawn over)
+            TOTAL_SCORE++; //increment the score
+            Update_Random_Fruit_Coordinates(); //change the coordinates of the next fruit to be drawn
+            Draw_Fruit(); //draw that next fruit
             current_fruit++;
-            printf("\n\r");
+            printf("\n\r"); //debug for checking score
             printf("Score: \n\r");
             char X[20];
             sprintf(X, "%zu", TOTAL_SCORE);
@@ -214,22 +215,22 @@ void Task_Packman(void *pvParameters)
         }
 
         dir = 4;
-        Draw_Packman();
+        Draw_Packman(); //draw packman
 
         char TIME[20];
         sprintf(TIME, "%u", total_time);
         printf(TIME);
         printf("\n\r");
 
-        if(total_time>=30000){
+        if(total_time>=30000){ //check for the timer ending to end the game
             END=true;
             vTaskDelay(pdMS_TO_TICKS(1000));
-            vTaskPrioritySet( Task_Screen_Handle, 4);
+            vTaskPrioritySet( Task_Screen_Handle, 4); //change the priority of the screen handle so that the ending of the game will override everything else
         }
 
         // delay for speed ms
         vTaskDelay(pdMS_TO_TICKS(speed));
-        total_time = total_time+ speed;
+        total_time = total_time+ speed; //the delay of the moving of packman is equivalent to the time he spends moving, it is used here to create a timer by adding the delays until we hit 30s
         }
 
     }

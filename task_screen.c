@@ -1,7 +1,7 @@
 /*
  * task_buzzer.c
  *
- * Author: Michael Sexton
+ * Author: Michael Sexton and Jack Bybel
  *
  */
 
@@ -15,26 +15,27 @@ volatile uint32_t TIMER;
 
 void Task_Screen_Init(void)
 {
-    //P5->DIR &= !BIT0; // Initialize S1
-    // ticks- desired period / core clock period
-        // 20e-3/(1/3e6) = (3e6*20)/1000
-        uint32_t ticks = ((SystemCoreClock * 32000)/1000) -1;
-
-        // Stop the timer
-        TIMER32_2->CONTROL = 0;
-        // Set the load register
-        TIMER32_2->LOAD = ticks;
-
-        // Enable the Timer32 interrupt in NVIC
-        __enable_irq();
-        NVIC_EnableIRQ(T32_INT2_IRQn);
-        NVIC_SetPriority(T32_INT2_IRQn, 3);
-
-        TIMER32_2->CONTROL = TIMER32_CONTROL_ENABLE | // Turn timer on
-                                     TIMER32_CONTROL_ONESHOT | // periodic mode
-                                     TIMER32_CONTROL_SIZE | // 32 bit timer
-                                     TIMER32_CONTROL_IE; // enable interrupts
-printf("endINit");
+    //legacy timer code
+//    //P5->DIR &= !BIT0; // Initialize S1
+//    // ticks- desired period / core clock period
+//        // 20e-3/(1/3e6) = (3e6*20)/1000
+//        uint32_t ticks = ((SystemCoreClock * 32000)/1000) -1;
+//
+//        // Stop the timer
+//        TIMER32_2->CONTROL = 0;
+//        // Set the load register
+//        TIMER32_2->LOAD = ticks;
+//
+//        // Enable the Timer32 interrupt in NVIC
+//        __enable_irq();
+//        NVIC_EnableIRQ(T32_INT2_IRQn);
+//        NVIC_SetPriority(T32_INT2_IRQn, 3);
+//
+//        TIMER32_2->CONTROL = TIMER32_CONTROL_ENABLE | // Turn timer on
+//                                     TIMER32_CONTROL_ONESHOT | // periodic mode
+//                                     TIMER32_CONTROL_SIZE | // 32 bit timer
+//                                     TIMER32_CONTROL_IE; // enable interrupts
+//printf("endINit");
 }
 
 void Print_Words(uint16_t word[], int length){
@@ -52,12 +53,12 @@ void Print_Words(uint16_t word[], int length){
         char_x=char_x+7;
         }
 }
-
+//function to display the start screen
 void Start_Screen(){
 
     char_x = 20;
     char_y = 40;
-
+    //arrays defining the text to be displayed by creating lookup values
     uint16_t welcome[] = {'W'-'0','e'-'0','l'-'0','c'-'0','o'-'0','m'-'0','e'-'0'};//{40,54,61,52,64,62,54};
     uint16_t to[] = {'t'-'0','o'-'0'};
     uint16_t fruit[] = {'F'-'0','r'-'0','u'-'0','i'-'0','t'-'0'};
@@ -68,7 +69,7 @@ void Start_Screen(){
     uint16_t con[]={'C'-'0','O'-'0','N'-'0'};
 
     //Draw_Black_Screen();
-
+    //print each word to be displayed in the start screen
     Print_Words(welcome,7);
     char_x = char_x+10;
 
@@ -93,14 +94,14 @@ void Start_Screen(){
     Print_Words(start, 5);
 
 printf("startScreen");
-    while(!(P5->IN & BIT1) == 0){}
+    while(!(P5->IN & BIT1) == 0){} //wait until S1 is pressed to start
 
-    Draw_Black_Screen();
+    Draw_Black_Screen(); //make the screen blank to start
     printf("here");
     vTaskDelay(100);
 
 }
-
+//function for printing numbers used in the end screen score
 void Print_Numbers(char X){
         lcd_draw_image(
             char_x,
@@ -116,21 +117,22 @@ void Print_Numbers(char X){
 }
 
 void End_Screen(){
-
+    //song to be played at the end
     uint8_t song = 1;
-
+    //coordinates for where to print the words
     char_x = 20;
     char_y = 40;
 
+    //once again arrays to define the words to be printed
     uint16_t congratulations[] = {'C'-'0','O'-'0','N'-'0','G'-'0','R'-'0','A'-'0','T'-'0','U'-'0','L'-'0','A'-'0','T'-'0','I'-'0','O'-'0','N'-'0','S'-'0'};
     uint16_t your[] = {'Y'-'0','o'-'0','u'-'0','r'-'0'};
     uint16_t score[] = {'S'-'0','c'-'0','o'-'0','r'-'0','e'-'0'};
     uint16_t is[] = {'i'-'0','s'-'0'};
 
     Draw_Black_Screen();
-
+    //actually printing said words
     Print_Words(congratulations,15);
-    char_x = 20;
+    char_x = 20; //changing where the words are to be printed so they don't overlap
     char_y = char_y+10;
 
     Print_Words(your,4);
@@ -143,7 +145,7 @@ void End_Screen(){
     Print_Words(is,2);
     char_x = 20;
     char_y = char_y+10;
-
+    //take console semaphore so that score can also be printed to UART for debugging
     xSemaphoreTake(Sem_Console, portMAX_DELAY);
     printf("SCORE:\n\r");
 
@@ -160,11 +162,11 @@ void End_Screen(){
      }else{
          x=2;
      }
-
+//for some reason it won't pickup the value of the array so we have to check it manually with a bunch of if statements
 for(i=0;i<x;i++){
     if(STR_SCORE[i] == '0'){
         Print_Numbers('0');
-    }else if(STR_SCORE[i] == '1'){
+    }else if(STR_SCORE[i] == '1'){ //if it is the right number then we put it into the string array to be printed as the score, we support 2 score digits
         Print_Numbers('1');
     }else if(STR_SCORE[i] == '2'){
         Print_Numbers('2');
@@ -184,7 +186,7 @@ for(i=0;i<x;i++){
         Print_Numbers('9');
     }
 }
-
+    //
     Print_Words((uint16_t*)(STR_SCORE[0]-'0'), 1);
     char_x = char_x+10;
     printf("first character printed");
@@ -193,14 +195,14 @@ for(i=0;i<x;i++){
         printf("not null");
         Print_Words((uint16_t*)(STR_SCORE[1]-'0'), 1);
     }
-
+    //play the ending music
     xQueueSend(Queue_Music, &song, portMAX_DELAY);
 
-
+    //give the console back so it can be used by other functions (unlikely at end of the game though)
     xSemaphoreGive(Sem_Console);
 
 
-
+    //wait until S1 is pressed
     while(!(P5->IN & BIT1) == 0){}
 
     //start timer
@@ -216,16 +218,16 @@ for(i=0;i<x;i++){
 void Task_Screen(void *pvParameters)
 {
 
-    while(1){
+    while(1){//check for the start of the game
         if(START){
-            Start_Screen();
+            Start_Screen();//if so display the start screen
             START = false;
 
             vTaskPrioritySet( Task_Screen_Handle,3 );
-        }else if(END){
-            End_Screen();
+        }else if(END){ //check for timer running out / end of the game
+            End_Screen(); //if so display end screen
         }
-        PACKMAN_MSG_t direction;
+        PACKMAN_MSG_t direction; //if no inputs keep pacman with a center command
         direction.cmd = PACKMAN_CMD_CENTER;
         direction.value = 0;
         xQueueSend(Queue_Packman, &direction, portMAX_DELAY);
@@ -234,16 +236,16 @@ void Task_Screen(void *pvParameters)
 
 }
 
-void T32_INT1_IRQHandler(void)
-{
-
-    printf("IRQ");
-//    TIMER = TIMER32_1->VALUE;
-    // Clear the timer interrupt
-    TIMER32_1->INTCLR=BIT0;
-    TIMER32_2->CONTROL = 0;
-
-    END=true;
-    vTaskDelay(pdMS_TO_TICKS(1000));
-    vTaskPrioritySet( Task_Screen_Handle, 4);
-}
+//void T32_INT1_IRQHandler(void)
+//{
+// //legacy timer interrupt code
+//    printf("IRQ");
+////    TIMER = TIMER32_1->VALUE;
+//    // Clear the timer interrupt
+//    TIMER32_1->INTCLR=BIT0;
+//    TIMER32_2->CONTROL = 0;
+//
+//    END=true;
+//    vTaskDelay(pdMS_TO_TICKS(1000));
+//    vTaskPrioritySet( Task_Screen_Handle, 4);
+//}
