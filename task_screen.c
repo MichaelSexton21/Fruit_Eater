@@ -186,15 +186,6 @@ for(i=0;i<x;i++){
         Print_Numbers('9');
     }
 }
-    //
-    Print_Words((uint16_t*)(STR_SCORE[0]-'0'), 1);
-    char_x = char_x+10;
-    printf("first character printed");
-
-    if(STR_SCORE[1] != '\0'){
-        printf("not null");
-        Print_Words((uint16_t*)(STR_SCORE[1]-'0'), 1);
-    }
     //play the ending music
     xQueueSend(Queue_Music, &song, portMAX_DELAY);
 
@@ -209,6 +200,8 @@ for(i=0;i<x;i++){
     Draw_Black_Screen();
     vTaskDelay(100);
 
+
+
 }
 
 //***************************************************************
@@ -222,18 +215,23 @@ void Task_Screen(void *pvParameters)
         if(START){
             Start_Screen();//if so display the start screen
             START = false;
+            vTaskPrioritySet(Task_Screen_Handle,3);
 
-            vTaskPrioritySet( Task_Screen_Handle,3 );
         }else if(END){ //check for timer running out / end of the game
+            vTaskPrioritySet(Task_Buzzer_Handle, 4);
             End_Screen(); //if so display end screen
+            END = false;
+            START = true;
+            TOTAL_SCORE = 0;
+            vTaskPrioritySet(Task_Buzzer_Handle, 1);
+            Start_Screen();
+
         }
         PACKMAN_MSG_t direction; //if no inputs keep pacman with a center command
         direction.cmd = PACKMAN_CMD_CENTER;
         direction.value = 0;
         xQueueSend(Queue_Packman, &direction, portMAX_DELAY);
     }
-
-
 }
 
 //void T32_INT1_IRQHandler(void)

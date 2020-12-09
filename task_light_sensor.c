@@ -169,7 +169,7 @@ void Task_Light_Sensor(void *pvParameters)
                 direction.value = 2.77;
             }else if(lux>1700){
                 Packman_Color = LCD_COLOR_YELLOW;
-                direction.value = 0;
+                direction.value = 1;
             }
 
             Draw_Fruit();
