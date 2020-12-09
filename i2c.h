@@ -3,6 +3,7 @@
  *
  *  Created on: Sep 25, 2020
  *      Author: Joe Krachey
+ *      Used by: Jack Bybel
  */
 
 #ifndef I2C_H_

@@ -58,7 +58,7 @@ Note_t Jeopardy[] =
 Note_t end_Song[] =
 {
 
-    {NOTE_E5,ONE_QUARTER,true},  // Tone, Time, Delay
+     {NOTE_E5,ONE_QUARTER,true},  // Tone, Time, Delay
     {NOTE_C5,ONE_EIGTH,true},
     {NOTE_D5,ONE_EIGTH,true},
     {NOTE_G5,ONE_EIGTH,true},
@@ -89,11 +89,11 @@ Note_t end_Song[] =
     {NOTE_A5S,ONE_QUARTER,true}, //A6S
 
     {NOTE_A5S,ONE_QUARTER,true}, //A6S
-    {NOTE_G6S,ONE_EIGTH,true},
+    {NOTE_G5S,ONE_EIGTH,true},
     {NOTE_G5,ONE_EIGTH,true},
     {NOTE_E5,ONE_EIGTH,true},
 
-    {NOTE_G6S,ONE_EIGTH,true},
+    {NOTE_G5S,ONE_EIGTH,true},
     {NOTE_G5,ONE_EIGTH,true},
     {NOTE_E5,ONE_EIGTH,false}
 
@@ -109,7 +109,7 @@ Note_t Eat[] =
 //***************************************************************
 // This function returns how long an individual  notes is played
 //***************************************************************
-uint32_t buzzer_get_time_delay(measure_time_t time) //given to us by class
+uint32_t buzzer_get_time_delay(measure_time_t time)
 {
     uint32_t time_return = 0;
 

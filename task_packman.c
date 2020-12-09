@@ -2,7 +2,7 @@
  * task_space_ship.c
  *
  *  Created on: Nov 25, 2020
- *  Authors: Michael Sexton and John Bybel
+ *  Authors: Michael Sexton and Jack Bybel
  *
  */
 
@@ -123,6 +123,10 @@ bool Collision_Check(){
 
 }
 
+void pause(){
+
+}
+
 
 /******************************************************************************
  * This task manages the movement of the space ship. The joystick task or the
@@ -181,7 +185,7 @@ void Task_Packman(void *pvParameters)
             dir = 3;
             y++;
         }else{
-            // If the ammount to move is greater than the screen, a lag is created while
+            // If the amount to move is greater than the screen, a lag is created while
             // waiting for the delay to finish but the picture no longer moves. Setting
             // the pixels to move to be 0 eliminates that delay once the picture hits the
             // edge of the screen

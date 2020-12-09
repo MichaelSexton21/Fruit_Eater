@@ -66,7 +66,6 @@ void Start_Screen(){
     uint16_t press[] = {'P'-'0','r'-'0','e'-'0','s'-'0','s'-'0'};
     uint16_t s1[] = {'S'-'0','1'-'0'};
     uint16_t start[] = {'S'-'0','t'-'0','a'-'0','r'-'0','t'-'0'};
-    uint16_t con[]={'C'-'0','O'-'0','N'-'0'};
 
     //Draw_Black_Screen();
     //print each word to be displayed in the start screen
@@ -200,8 +199,6 @@ for(i=0;i<x;i++){
     Draw_Black_Screen();
     vTaskDelay(100);
 
-
-
 }
 
 //***************************************************************
@@ -218,14 +215,10 @@ void Task_Screen(void *pvParameters)
             vTaskPrioritySet(Task_Screen_Handle,3);
 
         }else if(END){ //check for timer running out / end of the game
+
             vTaskPrioritySet(Task_Buzzer_Handle, 4);
             End_Screen(); //if so display end screen
-            END = false;
-            START = true;
-            TOTAL_SCORE = 0;
             vTaskPrioritySet(Task_Buzzer_Handle, 1);
-            Start_Screen();
-
         }
         PACKMAN_MSG_t direction; //if no inputs keep pacman with a center command
         direction.cmd = PACKMAN_CMD_CENTER;
@@ -233,17 +226,3 @@ void Task_Screen(void *pvParameters)
         xQueueSend(Queue_Packman, &direction, portMAX_DELAY);
     }
 }
-
-//void T32_INT1_IRQHandler(void)
-//{
-// //legacy timer interrupt code
-//    printf("IRQ");
-////    TIMER = TIMER32_1->VALUE;
-//    // Clear the timer interrupt
-//    TIMER32_1->INTCLR=BIT0;
-//    TIMER32_2->CONTROL = 0;
-//
-//    END=true;
-//    vTaskDelay(pdMS_TO_TICKS(1000));
-//    vTaskPrioritySet( Task_Screen_Handle, 4);
-//}

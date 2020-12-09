@@ -2,7 +2,7 @@
  * task_light_sensor.c
  *
  *  Created on: Nov 25, 2020
- *  Authors: Michael Sexton and John Bybel
+ *  Authors: Michael Sexton and Jack Bybel
  *
  */
 
@@ -15,8 +15,7 @@
 
 
  /******************************************************************************
-  * Initialize the tmp006 temperature sensor on the MKII.  This function assumes
-  * that the I2C interface has already been configured to operate at 100KHz.
+  * Initialize the OPT3001 Light Sensor
   ******************************************************************************/
  void OPT3001_init(void)
  {
@@ -34,8 +33,7 @@
  }
 
 /******************************************************************************
-* This function will run the same configuration code that you would have
-* written for HW02.
+* Initializes all Hardware needed for Task_Light_Sensor
 ******************************************************************************/
  void Task_Light_Sensor_Init(void)
  {
@@ -45,7 +43,7 @@
 
 
  /******************************************************************************
-  * Returns the current temperature in degrees C.
+  * Returns the current ambient light value in lux
   ******************************************************************************/
  uint32_t OPT3001_get_lux(void)
  {
@@ -66,7 +64,9 @@
         return result;
  }
 
-
+ /******************************************************************************
+  * Used for debugging prints the OPT3001 Device Id
+  ******************************************************************************/
 void print_device_id(){
     //i2c_read_16(I2C_OPT3001_ADDRESS, I2C_OPT3001_DEVICE_ID);
 
@@ -83,6 +83,9 @@ void print_device_id(){
      xSemaphoreGive(Sem_Console);
 }
 
+/******************************************************************************
+ * Used for debugging prints the OPT3001 Manufacturer
+ ******************************************************************************/
 void print_manufacturer_id(){
 
     xSemaphoreTake(Sem_Console, portMAX_DELAY);
@@ -99,13 +102,11 @@ void print_manufacturer_id(){
     xSemaphoreGive(Sem_Console);
 }
 /******************************************************************************
-* Bottom Half Task.  Examines the ADC data from the joy stick on the MKII
+* Examines lux values from the Light Sensor
 ******************************************************************************/
 void Task_Light_Sensor(void *pvParameters)
 {
     uint32_t lux;
-    uint32_t previous_lux;
-    uint16_t color = 0xFFFA;
 
     while(1)
         {
@@ -117,27 +118,6 @@ void Task_Light_Sensor(void *pvParameters)
 //            print_device_id();
 //            print_manufacturer_id();
             lux = OPT3001_get_lux();
-
-//            char curr_lux[20];
-//            sprintf(curr_lux, "%zu", lux); // "%f" for float //"%zu" for int
-//            char prev_lux[20];
-//            sprintf(prev_lux, "%zu", lux);
-//            xSemaphoreTake(Sem_Console, portMAX_DELAY);
-//            printf("Current Lux: \n\r");
-//            printf(curr_lux);
-//            printf("\n\r");
-//            printf("Previous Lux: \n\r");
-//            printf(prev_lux);
-//            printf("\n\r");
-//            xSemaphoreGive(Sem_Console);
-
-//            if(lux < previous_lux && color < 0xDDDD){
-//                Packman_Color = color+0x0222;
-//            }else if(lux > previous_lux && color >0x0222){
-//                Packman_Color = color-0x0222;
-//            }else{
-//                Packman_Color = color;
-//            }
 
             PACKMAN_MSG_t direction;
             if(lux<100){
@@ -174,12 +154,9 @@ void Task_Light_Sensor(void *pvParameters)
 
             Draw_Fruit();
             Draw_Packman();
-            previous_lux = lux;
 
 
             direction.cmd = PACKMAN_CMD_SPEED;
-            // https://stackoverflow.com/questions/5294955/how-to-scale-down-a-range-of-numbers-with-a-known-min-and-max-value
-            // direction.value = (20000-lux)/72;
             xQueueSend(Queue_Packman, &direction, portMAX_DELAY);
 
         }

@@ -3,6 +3,7 @@
  *
  *  Created on: Sep 25, 2020
  *      Author: Joe Krachey
+ *      Used by: Michael Sexton and Jack Bybel
  */
 
 #include "i2c.h"

@@ -34,7 +34,7 @@
  * main.c
  *
  *  Created on: Nov 25, 2020
- *  Authors: Michael Sexton and John Bybel
+ *  Authors: Michael Sexton and Jack Bybel
  *
  */
 

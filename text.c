@@ -1,3 +1,9 @@
+/*
+ * text.c
+ *
+ *      Author: Michael Sexton and Jack Bybel
+ */
+
 #include <text.h>
 //
 //  Font data for Microsoft Sans Serif 8pt

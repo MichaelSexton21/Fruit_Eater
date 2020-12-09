@@ -1,5 +1,10 @@
-// Font data for Microsoft Sans Serif 8pt
+/*
+ * text.h
+ *
+ *      Author: Michael Sexton and Jack Bybel
+ */
 
+// Font data for Microsoft Sans Serif 8pt
 
 #ifndef TEXT_H_
 #define TEXT_H_

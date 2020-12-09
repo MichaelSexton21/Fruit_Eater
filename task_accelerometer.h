@@ -2,7 +2,7 @@
  * task_accelerometer.h
  *
  *  Created on: Nov 25, 2020
- *  Authors: Michael Sexton and John Bybel
+ *  Authors: Michael Sexton and Jack Bybel
  *
  */
 
@@ -15,17 +15,7 @@ extern TaskHandle_t Task_Accelerometer_Handle;
 extern TaskHandle_t Task_Accelerometer_Timer_Handle;
 
 /******************************************************************************
-* Configure the IO pins for BOTH the X and Y directions of the analog
-* joystick.  The X direction should be configured to place the results in
-* MEM[0].  The Y direction should be configured to place the results in MEM[1].
-*
-* After BOTH analog signals have finished being converted, a SINGLE interrupt
-* should be generated.
-*
-* Parameters
-*      None
-* Returns
-*      None
+* Initializes all hardware for the accelerometer
 ******************************************************************************/
  void Task_Accelerometer_Init(void);
 

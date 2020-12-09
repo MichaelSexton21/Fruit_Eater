@@ -1,3 +1,10 @@
+/*
+ * packman.h
+ *
+ *  Created on: Nov 25, 2020
+ *  Authors: Michael Sexton and Jack Bybel
+ *
+ */
 #ifndef __PACKMAN_H__
 #define __PACKMAN_H__
 
@@ -24,16 +31,3 @@ extern const uint8_t blankHeightPixels;
 
 
 #endif
-//
-//#ifndef __SPACE_SHIP_H__
-//#define __SPACE_SHIP_H__
-//
-//#include <stdint.h>
-//
-///* Bitmap info for space_ship */
-//extern const uint8_t space_shipBitmaps[];
-//extern const uint8_t space_shipWidthPages;
-//extern const uint8_t space_shipWidthPixels;
-//extern const uint8_t space_shipHeightPixels;
-//
-//#endif

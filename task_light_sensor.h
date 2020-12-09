@@ -2,7 +2,7 @@
  * task_accelerometer.h
  *
  *  Created on: Nov 25, 2020
- *  Authors: Michael Sexton and John Bybel
+ *  Authors: Michael Sexton and Jack Bybel
  *
  */
 
@@ -27,25 +27,18 @@ extern TaskHandle_t Task_Light_Sensor_Handle;
 extern uint16_t Packman_Color;
 
 /******************************************************************************
-* Configure the IO pins for BOTH the X and Y directions of the analog
-* joystick.  The X direction should be configured to place the results in
-* MEM[0].  The Y direction should be configured to place the results in MEM[1].
-*
-* After BOTH analog signals have finished being converted, a SINGLE interrupt
-* should be generated.
-*
-* Parameters
-*      None
-* Returns
-*      None
+* Configures all Hardware needed for Task_Light_Sensor
 ******************************************************************************/
  void Task_Light_Sensor_Init(void);
 
 
+ /******************************************************************************
+ * Configures Timer for Task_Light_Sensor
+ ******************************************************************************/
  void Task_Light_Sensor_Timer(void *pvParameters);
 
 /******************************************************************************
-* Examines the ADC data from the joystick on the MKII
+* Examines the light values from the light sensor
 ******************************************************************************/
 void Task_Light_Sensor(void *pvParameters);
 
