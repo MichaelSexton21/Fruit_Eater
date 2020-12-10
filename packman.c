@@ -7,7 +7,19 @@
  */
 #include <packman.h>
 
-//packman up facing bitmap from dot factory
+// Bitmap sizes for packman
+const uint8_t packman_WidthPixels = 24;
+const uint8_t packman_HeightPixels = 20;
+
+// Bitmap sizes for the fruit
+const uint8_t fruitWidthPixels = 15;
+const uint8_t fruitHeightPixels = 15;
+
+// Bitmap sizes for the blank screen
+const uint8_t blankWidthPixels = 132;
+const uint8_t blankHeightPixels = 132;
+
+// packman up facing bitmap
 uint8_t packman_upBitmaps[] =
 {
 	0x00, 0x00, 0x00,
@@ -32,9 +44,7 @@ uint8_t packman_upBitmaps[] =
 	0x00, 0x00, 0x00
 };
 
-// Bitmap sizes for packman
-const uint8_t packman_WidthPixels = 24;
-const uint8_t packman_HeightPixels = 20;
+
 //packman downfacing bitmap
 uint8_t packman_downBitmaps[] =
 	{
@@ -83,6 +93,7 @@ uint8_t packman_leftBitmaps[] =
 	0x03, 0xF8, 0x00, //       #######    
       0x00, 0x00, 0x00  //
 };
+
 //packman facing right bitmap
 uint8_t packman_rightBitmaps[] =
 {
@@ -106,7 +117,6 @@ uint8_t packman_rightBitmaps[] =
 	0x0F, 0xF8, 0x00, //     #########     
 	0x07, 0xF0, 0x00, //      ####### 
       0x00, 0x00, 0x00, //
-
 };
 
 //bitmap for orange fruits
@@ -129,18 +139,6 @@ uint8_t orangeBitmaps[] =
     0x00, 0x00,
 };
 
-// Bitmap sizes for orange
-//const uint8_t orangeWidthPages = 15;
-//const uint8_t orangeHeightPixels = 15;
-
-const uint8_t fruitWidthPixels = 15;
-const uint8_t fruitHeightPixels = 15;
-
-
-
-// 
-//  Image data for apple
-// 
 //bitmap for apple
 uint8_t appleBitmaps[] =
 {
@@ -161,15 +159,6 @@ uint8_t appleBitmaps[] =
     0x00, 0x00,
 };
 
-// Bitmap sizes for apple
-//const uint8_t appleWidthPages = 15;
-//const uint8_t appleHeightPixels = 15;
-
-
-
-// 
-//  Image data for bannana
-// 
 //bitmap for bannana
 uint8_t bannanaBitmaps[] =
 {
@@ -190,12 +179,7 @@ uint8_t bannanaBitmaps[] =
     0x00, 0x00,
 };
 
-// Bitmap sizes for bannana
-//const uint8_t bannanaWidthPages = 15;
-//const uint8_t bannanaHeightPixels = 15;
-
 //bitmap for drawing a black screen
-
 const uint8_t blankScreenBitmaps[] = {
         0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xF0, // ####################################################################################################################################
             0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xF0, // ####################################################################################################################################
@@ -330,7 +314,3 @@ const uint8_t blankScreenBitmaps[] = {
             0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xF0, // ####################################################################################################################################
             0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xF0, // ####################################################################################################################################
         };
-
-const uint8_t blankWidthPixels = 132;
-const uint8_t blankHeightPixels = 132;
-

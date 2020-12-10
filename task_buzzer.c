@@ -1,16 +1,21 @@
 /*
  * task_buzzer.c
  *
- * Author: Michael Sexton and Jack Bybel
+ * *  Created on: Nov 25, 2020
+ * Authors: Michael Sexton and Jack Bybel
  *
  */
 
 #include <task_buzzer.h>
+
+
 TaskHandle_t Task_Buzzer_Handle;
 QueueHandle_t Queue_Music;
-Note_t* curr_music;
+Note_t* curr_music; // current song
 
-//notes for jeopardy theme
+// notes for jeopardy theme (used in testing but not used for final project)
+// it took a while to do so feel free to use the last (F6 I think was too high
+// for the register to hold, replaced with F5)
 Note_t Jeopardy[] =
 {
 
@@ -54,11 +59,11 @@ Note_t Jeopardy[] =
     {NOTE_F4,ONE_HALF,false}
 
 };
-//notes for ending song
+
+// Song to be played at the end of a game
 Note_t end_Song[] =
 {
-
-     {NOTE_E5,ONE_QUARTER,true},  // Tone, Time, Delay
+    {NOTE_E5,ONE_QUARTER,true},  // Tone, Time, Delay
     {NOTE_C5,ONE_EIGTH,true},
     {NOTE_D5,ONE_EIGTH,true},
     {NOTE_G5,ONE_EIGTH,true},
@@ -99,7 +104,8 @@ Note_t end_Song[] =
 
 
 };
-//noise for eating the fruit
+
+// noise for eating the fruit
 Note_t Eat[] =
 {
  {NOTE_C5,ONE_EIGTH,true},{NOTE_A5,ONE_EIGTH,true}, {NOTE_G5,ONE_EIGTH,false}
@@ -175,6 +181,7 @@ void Buzzer_Set_Period(uint16_t ticks_period)
     // Set Mode Control to UP and Clear the current count
     TIMER_A0->CTL |= TIMER_A_CTL_MC__UP | TIMER_A_CTL_CLR;
 }
+
 /*
  * Busy waits for a given number of SMCLK clock cycles
  *
@@ -199,10 +206,7 @@ void T32_1_wait(uint32_t ticks)
     TIMER32_1->CONTROL |= TIMER32_CONTROL_ENABLE;
 
     // Wait until it reaches 0
-    while(TIMER32_1->VALUE !=0)
-    {
-
-    }
+    while(TIMER32_1->VALUE !=0){}
 
 }
 //***************************************************************************
@@ -307,8 +311,7 @@ void Task_Buzzer(void *pvParameters)
                 buzzer_play_note(i);
             }
 
-
-        // Turn the Buzzer off once playing
+        // Turn the Buzzer off once done playing
         Buzzer_Off();
     }
 }

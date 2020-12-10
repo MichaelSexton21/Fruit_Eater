@@ -5,6 +5,7 @@
  *  Authors: Michael Sexton and Jack Bybel
  *
  */
+
 #include "msp.h"
 
 #ifndef LCD_H_

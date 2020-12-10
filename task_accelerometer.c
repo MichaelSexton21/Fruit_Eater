@@ -2,23 +2,22 @@
  * task_accelerometer.c
  *
  *  Created on: Nov 25, 2020
- *  Authors: Michael Sexton and John Bybel
+ *  Authors: Michael Sexton and Jack Bybel
  *
  */
 
 #include <main.h>
 
-
  TaskHandle_t Task_Accelerometer_Bottom_Half_Handle;
  TaskHandle_t Task_Accelerometer_Timer_Handle;
+
 //global variables for the accelerameter directions
  volatile uint32_t ACC_X_DIR = 0;
  volatile uint32_t ACC_Y_DIR = 0;
  volatile uint32_t ACC_Z_DIR = 0;
 
 /******************************************************************************
-* This function will run the same configuration code that you would have
-* written for HW02.
+* Initializes all hardware for the accelerometer
 ******************************************************************************/
  void Task_Accelerometer_Init(void)
  {
@@ -82,7 +81,7 @@
 
 
 /******************************************************************************
-* Bottom Half Task.  Examines the ADC data from the joy stick on the MKII
+* Bottom Half Task.  Examines the ADC data from the accelerometer
 ******************************************************************************/
 void Task_Accelerometer_Bottom_Half(void *pvParameters)
 {
@@ -90,34 +89,25 @@ void Task_Accelerometer_Bottom_Half(void *pvParameters)
 
     while(1)
         {
-
             // Wait until we get a task notification from the ADC14 ISR
             ulTaskNotifyTake(pdTRUE, portMAX_DELAY);
 
-            char X[20];
-            sprintf(X, "%zu", ACC_X_DIR); // "%f" for float //"%zu" for int
-            xSemaphoreTake(Sem_Console, portMAX_DELAY);
-            //printf("X:\n\r");
-            //printf(X);
-            //printf("\n\r");
-
-
             /*
              * Set the dir variable to one of the following values based
-             * on the values of JOYSTICK_X_DIR and JOYSTIC_Y_DIR
+             * on the values of the accelerometer
              */
             if(ACC_X_DIR < 2000){
-                //printf("Left");
                direction.cmd = PACKMAN_CMD_LEFT;
+
             }else if(ACC_X_DIR > 2150){
-                //printf("Right");
                 direction.cmd = PACKMAN_CMD_RIGHT;
+
             }else if(ACC_Y_DIR < 2020){
-                //printf("DOWN");
                 direction.cmd = PACKMAN_CMD_DOWN;
+
             }else if(ACC_Y_DIR > 2100){
-                //printf("UP");
                 direction.cmd = PACKMAN_CMD_UP;
+
             }else{
                 direction.cmd = PACKMAN_CMD_CENTER;
             }
@@ -130,8 +120,6 @@ void Task_Accelerometer_Bottom_Half(void *pvParameters)
                 xQueueSend(Queue_Packman, &direction, portMAX_DELAY);
             }
 
-            xSemaphoreGive(Sem_Console);
-
         }
 }
 
@@ -141,16 +129,14 @@ void Task_Accelerometer_Bottom_Half(void *pvParameters)
 ******************************************************************************/
 void ADC14_IRQHandler(void)
 {
-
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
     ACC_X_DIR = ADC14->MEM[0]; // Read the value and clear the interrupt
     ACC_Y_DIR = ADC14->MEM[1];
     ACC_Z_DIR = ADC14->MEM[2]; //assign values to their x y and z directions
 
-
     /*
-     * Send a task notification to Task_Joystick_Bottom_Half
+     * Send a task notification to Task_Accelerometer_Bottom_Half
      */
     vTaskNotifyGiveFromISR(Task_Accelerometer_Bottom_Half_Handle,&xHigherPriorityTaskWoken);
     portYIELD_FROM_ISR( xHigherPriorityTaskWoken );

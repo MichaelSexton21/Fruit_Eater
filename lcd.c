@@ -11,8 +11,6 @@
 uint8_t Lcd_Orientation = LCD_ORIENTATION_UP;
 uint16_t Lcd_ScreenWidth, Lcd_ScreenHeigth;
 
-
-
 /* ****************************************************************************
  * Used to configure the 5 pins that control the LCD interface on the MKII.
  *

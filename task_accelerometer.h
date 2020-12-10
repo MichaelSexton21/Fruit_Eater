@@ -26,10 +26,8 @@ void Task_Accelerometer_Timer(void *pvParameters);
 
 
 /******************************************************************************
-* Examines the ADC data from the joystick on the MKII
+* Examines the ADC data from the accelerometer
 ******************************************************************************/
 void Task_Accelerometer_Bottom_Half(void *pvParameters);
-
-
 
 #endif /* TASK_ACCELEROMETER_H_ */

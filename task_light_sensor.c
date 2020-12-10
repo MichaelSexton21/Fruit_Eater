@@ -11,7 +11,7 @@
 
 
  TaskHandle_t Task_Light_Sensor_Bottom_Half_Handle;
- uint16_t Packman_Color = LCD_COLOR_WHITE;
+ uint16_t Packman_Color = LCD_COLOR_WHITE; // initializes packman's color to white
 
 
  /******************************************************************************
@@ -101,12 +101,14 @@ void print_manufacturer_id(){
 
     xSemaphoreGive(Sem_Console);
 }
+
 /******************************************************************************
 * Examines lux values from the Light Sensor
 ******************************************************************************/
 void Task_Light_Sensor_Bottom_Half(void *pvParameters)
 {
     uint32_t lux;
+    PACKMAN_MSG_t direction;
 
     while(1)
         {
@@ -116,7 +118,7 @@ void Task_Light_Sensor_Bottom_Half(void *pvParameters)
 //            print_manufacturer_id();
             lux = OPT3001_get_lux();
 
-            PACKMAN_MSG_t direction;
+            // change the color and speed of packman depending on the ambient light
             if(lux<100){
                 Packman_Color = LCD_COLOR_WHITE;
                 direction.value = 25;
@@ -149,9 +151,9 @@ void Task_Light_Sensor_Bottom_Half(void *pvParameters)
                 direction.value = 1;
             }
 
+            // update the color of the fruit and packman
             Draw_Fruit();
             Draw_Packman();
-
 
             direction.cmd = PACKMAN_CMD_SPEED;
             xQueueSend(Queue_Packman, &direction, portMAX_DELAY);

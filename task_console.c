@@ -10,8 +10,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+// This file is only used for debugging purposes
+
 QueueHandle_t Queue_Console;
-TaskHandle_t Task_Console_Handle;
 SemaphoreHandle_t Sem_Console;
 
 #define RX_ARRAY_SIZE 10
@@ -24,10 +25,6 @@ volatile uint16_t RX_INDEX=0;
 /******************************************************************************
  * This function configures the eUSCI_A0 to be a UART that communicates at
  * 115200 8N1.
- *
- * The configuration should be identical to what you have done
- * in a previous ICE-08 EXCEPT that you will need to set the priority of the
- * eUSCI to be a value that is equal to 2
  ******************************************************************************/
 static void console_hw_init(void)
 {
@@ -63,16 +60,13 @@ static void console_hw_init(void)
     NVIC_EnableIRQ(EUSCIA0_IRQn);
     NVIC_SetPriority(EUSCIA0_IRQn, 2);
 
-    // Prime the pump -- ADD CODE
+    // Prime the pump
     EUSCI_A0->TXBUF = 0;
 }
 
 /******************************************************************************
  * This function initializes the eUSCI_A0 hardware by calling console_hw_init().
  * It will also initialize Sem_Console.
- *
- * NOTE:  This function must be run prior to the FreeRTOS scheduler being
- * started.
  ******************************************************************************/
 void Task_Console_Init(void)
 {
@@ -90,8 +84,7 @@ void Task_Console_Init(void)
 }
 
 /*****************************************************
- * Needed to get printf to work using polling when
- * transmitting characters.
+ * Needed to get printf to work using polling
  *****************************************************/
 int fputc(int c, FILE* stream)
 {
@@ -103,6 +96,3 @@ int fputc(int c, FILE* stream)
 
     return 0;
 }
-
-
-

@@ -52,7 +52,6 @@ int main(void)
     Task_Packman_Init();
     Task_Accelerometer_Init();
     Task_Buzzer_Init();
-    //Task_Screen_Init();
 
     __enable_irq();
 
@@ -63,13 +62,13 @@ int main(void)
     printf("\n\r");
 
     xTaskCreate
-         (   Task_Light_Sensor_Bottom_Half,
-             "Task_Light_Sensor",
-             configMINIMAL_STACK_SIZE,
-             NULL,
-             3,
-             &Task_Light_Sensor_Bottom_Half_Handle
-         );
+     (   Task_Light_Sensor_Bottom_Half,
+         "Task_Light_Sensor",
+         configMINIMAL_STACK_SIZE,
+         NULL,
+         3,
+         &Task_Light_Sensor_Bottom_Half_Handle
+     );
 
     xTaskCreate
      (   Task_Packman,

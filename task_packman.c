@@ -1,8 +1,8 @@
 /*
- * task_space_ship.c
+ * task_packman.c
  *
  *  Created on: Nov 25, 2020
- *  Authors: Michael Sexton and Jack Bybel
+ *  Authors: Michael Sexton and John Bybel
  *
  */
 
@@ -17,16 +17,20 @@
 
 TaskHandle_t Task_Packman_Handle;
 QueueHandle_t Queue_Packman;
+
+// starting position for packman and global position variables
 uint8_t x = 64;
 uint8_t y = 64;
-volatile uint8_t fruit_x;
-volatile uint8_t fruit_y;
-uint8_t* current_packman_Bitmap = packman_rightBitmaps;
-uint8_t* current_fruit_Bitmap = orangeBitmaps;
-uint8_t current_fruit = 0;
-volatile uint16_t TOTAL_SCORE = 0;
-int total_time = 0;
 
+uint8_t fruit_x;
+uint8_t fruit_y;
+
+uint8_t* current_packman_Bitmap = packman_rightBitmaps; // current orientation of packman
+uint8_t* current_fruit_Bitmap = orangeBitmaps; //current fruit bitmaps
+uint8_t current_fruit = 0; // current fruit control variable
+
+volatile uint16_t TOTAL_SCORE = 0; // Score
+int total_time = 0; // elapsed time
 
 
 /******************************************************************************
@@ -44,7 +48,10 @@ void Task_Packman_Init(void)
     Crystalfontz128x128_Init();
 
 }
-//draw packman on the screen
+
+/******************************************************************************
+ * Draws packman on the screen
+ ******************************************************************************/
 void Draw_Packman(void){
     lcd_draw_image(
                 x,
@@ -58,22 +65,21 @@ void Draw_Packman(void){
 }
 
 
-
+/******************************************************************************
+ * Randomly Updates the Fruit Coordinages
+ ******************************************************************************/
 void Update_Random_Fruit_Coordinates(){
 
-   // Intializes random number generator
-   //srand((unsigned) time(&t));
-    uint32_t distance = sqrt((pow(fruit_x-x,2)+pow(fruit_y-y,2)));
+   fruit_x = (rand() % (117 - 15 + 1)) + 15;  //rand() % 133;
+   fruit_y = (rand() % (117 - 15 + 1)) + 15;
 
-    //while(distance<25){
-
-       fruit_x = (rand() % (117 - 15 + 1)) + 15;  //rand() % 133;
-       fruit_y = (rand() % (117 - 15 + 1)) + 15;
-       distance = sqrt((pow(fruit_x-x,2)+pow(fruit_y-y,2)));
-    //}
 }
-//draw the fruit on the screen depending on which fruit was given
+
+/******************************************************************************
+ * Draws the fruit on the screen depending on which fruit is selected
+ ******************************************************************************/
 void Draw_Fruit(void){
+
     if(current_fruit == 0){
         current_fruit_Bitmap = orangeBitmaps; //draw the orange
     }else if(current_fruit == 1){
@@ -92,9 +98,11 @@ void Draw_Fruit(void){
                 LCD_COLOR_BLACK
         );
 }
-//function for drawing a black screen, used to clear things off the screen
+
+/******************************************************************************
+ * Draws a black screen, used to clear things off the screen
+ ******************************************************************************/
 void Draw_Black_Screen(){
-    printf("blackScreen");
     lcd_draw_image(
                     64,
                     64,
@@ -105,25 +113,18 @@ void Draw_Black_Screen(){
                     LCD_COLOR_BLACK
             );
 }
-//check the distance between packman and the fruit
-//used to determine when fruit should be "eaten"
+
+/******************************************************************************
+ * Check if a fruit has been eaten based on how far apart their coordiantes are
+ ******************************************************************************/
 bool Collision_Check(){
 
-    char X[20];
     uint32_t distance = sqrt((pow(fruit_x-x,2)+pow(fruit_y-y,2))); //distance formula using coordinates of fruit and packman
 
     if(distance<17) //if the distance is less than 17 then eat the fruit, if not don't
         return true;
     else
         return false;
-
-    sprintf(X, "%zu", distance);
-    printf("\n\r");
-    printf(X);
-
-}
-
-void pause(){
 
 }
 
@@ -135,17 +136,15 @@ void pause(){
 void Task_Packman(void *pvParameters)
 {
 
-    printf("Task_Packman");
-    srand(time(0));
+    srand(time(0)); // initalize the randon number generator for the fruit
     uint8_t dir = 0; // Which way to point packman
     PACKMAN_MSG_t direction;
+
     int speed = 25; // Delay between movements
     int pixelsToMove; // Number of pixels packman needs to move
-    uint8_t song = 0;
+    uint8_t song = 0; // current song
 
-
-    // Draw the initial starting image of packman.
-    Draw_Packman();
+    Draw_Packman(); // Draw the initial starting image of packman.
     Update_Random_Fruit_Coordinates();
     Draw_Fruit();
     current_fruit++;
@@ -156,7 +155,6 @@ void Task_Packman(void *pvParameters)
     {
         // Wait for data to be in the queue
         xQueueReceive(Queue_Packman, &direction, portMAX_DELAY);
-        //printf("Task_Packman\n\r");
 
         // if the direction is speed, update the speed and don't move
         if(direction.cmd == PACKMAN_CMD_SPEED){
@@ -185,14 +183,15 @@ void Task_Packman(void *pvParameters)
             dir = 3;
             y++;
         }else{
-            // If the amount to move is greater than the screen, a lag is created while
+            // If the ammount to move is greater than the screen, a lag is created while
             // waiting for the delay to finish but the picture no longer moves. Setting
             // the pixels to move to be 0 eliminates that delay once the picture hits the
             // edge of the screen
             pixelsToMove = 0;
             dir = 1;
         }
-        // draw the packman
+
+        // draw packman
         if(dir==0){
             current_packman_Bitmap = packman_leftBitmaps;
         }else if(dir==1){
@@ -202,8 +201,10 @@ void Task_Packman(void *pvParameters)
         }else if(dir==3){
             current_packman_Bitmap = packman_downBitmaps;
         }
+
         //check for collision
         if(Collision_Check()){
+
             song = 0; //fruit has been eaten so send the fruit eating sound to the music queue
             xQueueSend(Queue_Music, &song, portMAX_DELAY);
             Draw_Black_Screen(); //draw black screen to clear the fruit from the screen (packman will be redrawn over)
@@ -211,20 +212,12 @@ void Task_Packman(void *pvParameters)
             Update_Random_Fruit_Coordinates(); //change the coordinates of the next fruit to be drawn
             Draw_Fruit(); //draw that next fruit
             current_fruit++;
-            printf("\n\r"); //debug for checking score
-            printf("Score: \n\r");
-            char X[20];
-            sprintf(X, "%zu", TOTAL_SCORE);
-            printf(X);
+
         }
 
-        dir = 4;
+        dir = 4; // change the direction of packman
         Draw_Packman(); //draw packman
 
-        char TIME[20];
-        sprintf(TIME, "%u", total_time);
-        printf(TIME);
-        printf("\n\r");
 
         if(total_time>=30000){ //check for the timer ending to end the game
             END=true;

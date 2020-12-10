@@ -7,37 +7,19 @@
 
 #include <task_screen.h>
 TaskHandle_t Task_Screen_Handle;
+
+// state control variables to determine what state the game is in
 bool START = true;
 bool END = false;
+
+// cursor for printing letters to the screen
 int char_x;
 int char_y;
-volatile uint32_t TIMER;
+volatile uint32_t TIMER; // elapsed time
 
-void Task_Screen_Init(void)
-{
-    //legacy timer code
-//    //P5->DIR &= !BIT0; // Initialize S1
-//    // ticks- desired period / core clock period
-//        // 20e-3/(1/3e6) = (3e6*20)/1000
-//        uint32_t ticks = ((SystemCoreClock * 32000)/1000) -1;
-//
-//        // Stop the timer
-//        TIMER32_2->CONTROL = 0;
-//        // Set the load register
-//        TIMER32_2->LOAD = ticks;
-//
-//        // Enable the Timer32 interrupt in NVIC
-//        __enable_irq();
-//        NVIC_EnableIRQ(T32_INT2_IRQn);
-//        NVIC_SetPriority(T32_INT2_IRQn, 3);
-//
-//        TIMER32_2->CONTROL = TIMER32_CONTROL_ENABLE | // Turn timer on
-//                                     TIMER32_CONTROL_ONESHOT | // periodic mode
-//                                     TIMER32_CONTROL_SIZE | // 32 bit timer
-//                                     TIMER32_CONTROL_IE; // enable interrupts
-//printf("endINit");
-}
-
+/******************************************************************************
+ * This function prints a word to the screen given the word, and length
+ ******************************************************************************/
 void Print_Words(uint16_t word[], int length){
     int i=0;
     for(i=0;i<length;i++){
@@ -53,7 +35,10 @@ void Print_Words(uint16_t word[], int length){
         char_x=char_x+7;
         }
 }
-//function to display the start screen
+
+/******************************************************************************
+ * Displays the start screen
+ ******************************************************************************/
 void Start_Screen(){
 
     char_x = 20;
@@ -67,7 +52,6 @@ void Start_Screen(){
     uint16_t s1[] = {'S'-'0','1'-'0'};
     uint16_t start[] = {'S'-'0','t'-'0','a'-'0','r'-'0','t'-'0'};
 
-    //Draw_Black_Screen();
     //print each word to be displayed in the start screen
     Print_Words(welcome,7);
     char_x = char_x+10;
@@ -92,29 +76,34 @@ void Start_Screen(){
 
     Print_Words(start, 5);
 
-printf("startScreen");
     while(!(P5->IN & BIT1) == 0){} //wait until S1 is pressed to start
 
     Draw_Black_Screen(); //make the screen blank to start
-    printf("here");
+
     vTaskDelay(100);
 
 }
-//function for printing numbers used in the end screen score
+
+/******************************************************************************
+ * Prints the numbers used in the end score
+ ******************************************************************************/
 void Print_Numbers(char X){
-        lcd_draw_image(
-            char_x,
-            char_y,
-            microsoftSansSerif_8ptDescriptors[X-'0'].widthBits,
-            9,
-            &microsoftSansSerif_8ptBitmaps[microsoftSansSerif_8ptDescriptors[X-'0'].offset],
-            LCD_COLOR_RED,
-            LCD_COLOR_BLACK
-        );
-        char_x=char_x+7;
+    lcd_draw_image(
+        char_x,
+        char_y,
+        microsoftSansSerif_8ptDescriptors[X-'0'].widthBits,
+        9,
+        &microsoftSansSerif_8ptBitmaps[microsoftSansSerif_8ptDescriptors[X-'0'].offset],
+        LCD_COLOR_RED,
+        LCD_COLOR_BLACK
+    );
+    char_x=char_x+7;
 
 }
 
+/******************************************************************************
+ * Displays the End screen
+ ******************************************************************************/
 void End_Screen(){
     //song to be played at the end
     uint8_t song = 1;
@@ -129,7 +118,8 @@ void End_Screen(){
     uint16_t is[] = {'i'-'0','s'-'0'};
 
     Draw_Black_Screen();
-    //actually printing said words
+
+    //print message
     Print_Words(congratulations,15);
     char_x = 20; //changing where the words are to be printed so they don't overlap
     char_y = char_y+10;
@@ -144,15 +134,12 @@ void End_Screen(){
     Print_Words(is,2);
     char_x = 20;
     char_y = char_y+10;
-    //take console semaphore so that score can also be printed to UART for debugging
-    xSemaphoreTake(Sem_Console, portMAX_DELAY);
-    printf("SCORE:\n\r");
 
+    // convert the score to a string
     char STR_SCORE[5];
     sprintf(STR_SCORE, "%u", TOTAL_SCORE);
-    printf(STR_SCORE);
-    printf("\n\r");
 
+    // check if score is one digit or two
     int i;
     int x;
     if(STR_SCORE[1] == '\0'){
@@ -161,11 +148,13 @@ void End_Screen(){
      }else{
          x=2;
      }
-//for some reason it won't pickup the value of the array so we have to check it manually with a bunch of if statements
-for(i=0;i<x;i++){
+
+    // main logic for printing one or two digits
+    // print numbers prints the bitmap equiavlent of the char
+    for(i=0;i<x;i++){
     if(STR_SCORE[i] == '0'){
         Print_Numbers('0');
-    }else if(STR_SCORE[i] == '1'){ //if it is the right number then we put it into the string array to be printed as the score, we support 2 score digits
+    }else if(STR_SCORE[i] == '1'){
         Print_Numbers('1');
     }else if(STR_SCORE[i] == '2'){
         Print_Numbers('2');
@@ -198,21 +187,21 @@ for(i=0;i<x;i++){
 }
 
 //***************************************************************
-// Plays the song (loop through, playing each note)
-// and then returns
+// Displays the start and end screen
 //***************************************************************
 void Task_Screen(void *pvParameters)
 {
 
-    while(1){//check for the start of the game
+    //check for the start of the game
+    while(1){
         if(START){
             Start_Screen();//if so display the start screen
             START = false;
-            vTaskPrioritySet(Task_Screen_Handle,3);
+            vTaskPrioritySet(Task_Screen_Handle,1); // decrease the priority
 
-        }else if(END){ //check for timer running out / end of the game
+        }else if(END){ // check for end of the game at end of task_packman.c
 
-            vTaskPrioritySet(Task_Buzzer_Handle, 4);
+            vTaskPrioritySet(Task_Buzzer_Handle, 4); // increase the prority
             End_Screen(); //if so display end screen
             vTaskPrioritySet(Task_Buzzer_Handle, 1);
         }
