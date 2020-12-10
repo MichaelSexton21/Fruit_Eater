@@ -63,12 +63,12 @@ int main(void)
     printf("\n\r");
 
     xTaskCreate
-         (   Task_Light_Sensor,
+         (   Task_Light_Sensor_Bottom_Half,
              "Task_Light_Sensor",
              configMINIMAL_STACK_SIZE,
              NULL,
              3,
-             &Task_Light_Sensor_Handle
+             &Task_Light_Sensor_Bottom_Half_Handle
          );
 
     xTaskCreate
@@ -81,15 +81,6 @@ int main(void)
      );
 
     xTaskCreate
-     (   Task_Console_Bottom_Half,
-         "Task_Console_Bottom_Half",
-         configMINIMAL_STACK_SIZE,
-         NULL,
-         2,
-         &Task_Console_Handle
-     );
-
-    xTaskCreate
     (   Task_Accelerometer_Timer,
         "Task_Accelerometer_Timer",
         configMINIMAL_STACK_SIZE,
@@ -99,12 +90,12 @@ int main(void)
     );
 
     xTaskCreate
-    (   Task_Accelerometer,
-        "Task_Accelerometer",
+    (   Task_Accelerometer_Bottom_Half,
+        "Task_Accelerometer_Bottom_Half",
         configMINIMAL_STACK_SIZE,
         NULL,
         3,
-        &Task_Accelerometer_Handle
+        &Task_Accelerometer_Bottom_Half_Handle
     );
 
     xTaskCreate

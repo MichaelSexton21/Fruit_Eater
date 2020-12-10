@@ -188,10 +188,6 @@ for(i=0;i<x;i++){
     //play the ending music
     xQueueSend(Queue_Music, &song, portMAX_DELAY);
 
-    //give the console back so it can be used by other functions (unlikely at end of the game though)
-    xSemaphoreGive(Sem_Console);
-
-
     //wait until S1 is pressed
     while(!(P5->IN & BIT1) == 0){}
 

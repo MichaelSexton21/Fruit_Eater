@@ -10,7 +10,7 @@
 #include "task_light_sensor.h"
 
 
- TaskHandle_t Task_Light_Sensor_Handle;
+ TaskHandle_t Task_Light_Sensor_Bottom_Half_Handle;
  uint16_t Packman_Color = LCD_COLOR_WHITE;
 
 
@@ -104,7 +104,7 @@ void print_manufacturer_id(){
 /******************************************************************************
 * Examines lux values from the Light Sensor
 ******************************************************************************/
-void Task_Light_Sensor(void *pvParameters)
+void Task_Light_Sensor_Bottom_Half(void *pvParameters)
 {
     uint32_t lux;
 
@@ -112,9 +112,6 @@ void Task_Light_Sensor(void *pvParameters)
         {
             vTaskDelay(pdMS_TO_TICKS(250));
 
-            xSemaphoreTake(Sem_Console, portMAX_DELAY);
-            //printf("Task_Light_Sensor\n\r");
-            xSemaphoreGive(Sem_Console);
 //            print_device_id();
 //            print_manufacturer_id();
             lux = OPT3001_get_lux();

@@ -23,7 +23,7 @@
 #define OPT3001_AUTOMATIC        0xC000
 #define OPT3001_CONTINUOUS       0x0600
 
-extern TaskHandle_t Task_Light_Sensor_Handle;
+extern TaskHandle_t Task_Light_Sensor_Bottom_Half_Handle;
 extern uint16_t Packman_Color;
 
 /******************************************************************************
@@ -40,7 +40,7 @@ extern uint16_t Packman_Color;
 /******************************************************************************
 * Examines the light values from the light sensor
 ******************************************************************************/
-void Task_Light_Sensor(void *pvParameters);
+ void Task_Light_Sensor_Bottom_Half(void *pvParameters);
 
 
 

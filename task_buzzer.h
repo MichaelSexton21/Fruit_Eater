@@ -73,6 +73,6 @@ void Task_Buzzer_Init(void);
 
 //***************************************************************
 //***************************************************************
-void Task_Buzzer(void);
+void Task_Buzzer(void *pvParameters);
 
 #endif /* TASK_BUZZER_H_ */

@@ -283,7 +283,7 @@ bool Buzzer_Run_Status(void){
 // Plays the song (loop through, playing each note)
 // and then returns
 //***************************************************************
-void Task_Buzzer(void)
+void Task_Buzzer(void *pvParameters)
 {
     uint8_t song = 0; //initially set the noise to be played as eating
 

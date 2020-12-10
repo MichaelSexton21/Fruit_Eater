@@ -9,7 +9,7 @@
 #include <main.h>
 
 
- TaskHandle_t Task_Accelerometer_Handle;
+ TaskHandle_t Task_Accelerometer_Bottom_Half_Handle;
  TaskHandle_t Task_Accelerometer_Timer_Handle;
 //global variables for the accelerameter directions
  volatile uint32_t ACC_X_DIR = 0;
@@ -84,10 +84,9 @@
 /******************************************************************************
 * Bottom Half Task.  Examines the ADC data from the joy stick on the MKII
 ******************************************************************************/
-void Task_Accelerometer(void *pvParameters)
+void Task_Accelerometer_Bottom_Half(void *pvParameters)
 {
     PACKMAN_MSG_t direction;
-    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
 
     while(1)
         {
@@ -153,7 +152,7 @@ void ADC14_IRQHandler(void)
     /*
      * Send a task notification to Task_Joystick_Bottom_Half
      */
-    vTaskNotifyGiveFromISR(Task_Accelerometer_Handle,&xHigherPriorityTaskWoken);
+    vTaskNotifyGiveFromISR(Task_Accelerometer_Bottom_Half_Handle,&xHigherPriorityTaskWoken);
     portYIELD_FROM_ISR( xHigherPriorityTaskWoken );
 }
 
