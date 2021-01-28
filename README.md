@@ -1,5 +1,6 @@
-# ECE-353-Final-Project
-ECE 353 microprocessors final project
+# Microprocessors Final Project
+
+This project was written for the MSP432R microprocessor. Using FreeRTOS we made a variation of Packman where you try to eat as many fruits as possible in 30 seconds.
 
 Authors: Michael Sexton and Jack Bybel
 
